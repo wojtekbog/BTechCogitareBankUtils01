@@ -10,13 +10,27 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace BTechCogitare.Bank.Utils01
+namespace BTechCogitareBankUtils01
 {
     [Guid("740F4C88-A0E5-4FE4-94F3-E7A806F92F73")]
     public interface ICOM_Signing_Interface
     {
         [DispId(1)]
-        String SignXml(String xml);
+        String SignXmlSha1(String xml);
+
+        [DispId(2)]
+        String Error
+        {
+            get;
+            //set;
+        }
+
+        [DispId(3)]
+        int ErrorCode
+        {
+            get;
+            //set;
+        }
     }
 
     // Events interface Database_COMObjectEvents 
@@ -32,9 +46,24 @@ namespace BTechCogitare.Bank.Utils01
         ComSourceInterfaces(typeof(ICOM_Signing_Events))]
     public class COM_Signing : ICOM_Signing_Interface
     {
+        public string Error { get; private set; }
+        public int ErrorCode { get; private set; }
 
-        public String SignXml(String xml)
+        public static void Main()
+        { }
+
+        public String SignXmlSha1(String xml)
         {
+            ErrorCode = 0;
+            Error = "";
+
+            if (xml == null || xml == "")
+            {
+                Error = "xml";
+                ErrorCode = 1;
+                return null;
+            }
+
             try
             {
                 CspParameters cspParams = new CspParameters
@@ -48,6 +77,7 @@ namespace BTechCogitare.Bank.Utils01
                     // Load an XML file into the XmlDocument object.
                     PreserveWhitespace = true
                 };
+
                 xmlDoc.LoadXml(xml);
                 
                 // Sign the XML document. 
@@ -60,14 +90,15 @@ namespace BTechCogitare.Bank.Utils01
                 xw.Close();
 
                 String ret = sw.ToString();
-                MessageBox.Show(ret);
+
                 return (ret.ToString());
 
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
-                return ("");
+                Error = e.Message;
+                ErrorCode = 2;
+                return null;
             }
 
         }
