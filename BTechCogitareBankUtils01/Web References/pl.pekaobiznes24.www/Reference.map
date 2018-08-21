@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/itin.003.001.01.xsd" filename="itin.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/camt.053.001.02.xsd" filename="camt.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/cmrq.002.001.02.xsd" filename="cmrq.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/camt.052.001.02.xsd" filename="camt0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/xmldsig-core-schema.xsd" filename="xmldsig-core-schema.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?wsdl" filename="pekao.ccs.001.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/rpts.002.001.02.xsd" filename="rpts.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/itin.001.001.02.xsd" filename="itin0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/cmrq.001.001.02.xsd" filename="cmrq0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/itsr.001.001.02.xsd" filename="itsr.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/pamt.005.001.01.xsd" filename="pamt.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/pamt.007.001.01.xsd" filename="pamt0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/pain.001.001.03.xsd" filename="pain.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/camt.003.001.04.xsd" filename="camt1.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/rpts.005.001.02.xsd" filename="rpts0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/tsmt.016.001.03.xsd" filename="tsmt.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/rpts.001.001.02.xsd" filename="rpts1.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/pamt.006.001.01.xsd" filename="pamt1.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/camt.004.001.04.xsd" filename="camt2.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/rpts.003.001.02.xsd" filename="rpts2.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/rpts.004.001.02.xsd" filename="rpts3.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/past.001.001.02.xsd" filename="past.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/pamt.004.001.01.xsd" filename="pamt2.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/pain.008.001.02.xsd" filename="pain0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/pain.002.001.03.xsd" filename="pain1.xsd" />
+  </Results>
+</DiscoveryClientResultsFile>

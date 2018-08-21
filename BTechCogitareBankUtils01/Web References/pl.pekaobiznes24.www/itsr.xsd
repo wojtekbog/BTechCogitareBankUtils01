@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:ca:std:ccs:tech:xsd:itsr.001.001.02" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:ca:std:ccs:tech:xsd:itsr.001.001.02" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Document" type="Document" />
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element name="ImpTraInit" type="ImportTransfersInitiation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ImportTransfersInitiation">
+    <xs:sequence>
+      <xs:element name="GrpHdr" type="GrpHeader" />
+      <xs:element name="OrgnlGrpInfAndSts" type="OriginalGrpInfoAndStatus" />
+      <xs:element name="PmtInf" type="PaymentInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GrpHeader">
+    <xs:sequence>
+      <xs:element name="MsgId" type="MessageId" />
+      <xs:element name="CreDtTm" type="CreDateAndTime" />
+      <xs:element minOccurs="0" name="ExpInf" type="ExpInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessageId">
+    <xs:sequence>
+      <xs:element name="Id" type="Max35Text" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Max35Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="35" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CreDateAndTime">
+    <xs:restriction base="xs:dateTime" />
+  </xs:simpleType>
+  <xs:complexType name="OriginalGrpInfoAndStatus">
+    <xs:sequence>
+      <xs:element name="OrgnlMsgId" type="Max35Text" />
+      <xs:element name="OrgnlMsgNmId" type="Name" />
+      <xs:element name="OrgnlNbOfTxs" type="OriginalNumberOfTxs" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="OriginalNumberOfTxs">
+    <xs:restriction base="xs:integer" />
+  </xs:simpleType>
+  <xs:complexType name="ImportInfo">
+    <xs:sequence>
+      <xs:element name="ImpTmpNm" type="Name" />
+      <xs:element name="ImpPackageName" type="Name" />
+      <xs:element name="ImpFileNm" type="Name" />
+      <xs:element name="ImpFile" type="File" />
+      <xs:element name="ImpValidData" type="Bool" />
+      <xs:element name="ExpWrongDataFile" type="Bool" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Name">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:simpleType name="File">
+    <xs:restriction base="xs:base64Binary" />
+  </xs:simpleType>
+  <xs:simpleType name="Bool">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="4" />
+      <xs:maxLength value="5" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="PaymentInfo">
+    <xs:sequence>
+      <xs:element name="TxSts" type="Number" />
+      <xs:element minOccurs="0" name="ErrorDtls" type="ErrorDetails" />
+      <xs:element minOccurs="0" name="CdtTrfTxInf" type="CreditorTrfTxInfo" />
+      <xs:element minOccurs="0" name="ReqdExctnDt" type="ReqdExctnDate" />
+      <xs:element minOccurs="0" name="DbtrAcct" type="DebtorAcct" />
+      <xs:element minOccurs="0" name="ExpInf" type="ExpInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Number">
+    <xs:restriction base="xs:integer" />
+  </xs:simpleType>
+  <xs:simpleType name="ErrorDetails">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:complexType name="CreditorTrfTxInfo">
+    <xs:sequence>
+      <xs:element name="Amt" type="Amount" />
+      <xs:element name="Cdtr" type="Creditor" />
+      <xs:element name="CdtrAcct" type="CreditorAccount" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Amount">
+    <xs:sequence>
+      <xs:element name="InstdAmt" type="InstdAmount" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InstdAmount">
+    <xs:simpleContent>
+      <xs:extension base="xs:double">
+        <xs:attribute name="Ccy" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="Creditor">
+    <xs:sequence>
+      <xs:element name="Nm" type="Name" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="CreditorAccount">
+    <xs:restriction base="xs:integer" />
+  </xs:simpleType>
+  <xs:simpleType name="ReqdExctnDate">
+    <xs:restriction base="xs:date" />
+  </xs:simpleType>
+  <xs:complexType name="DebtorAcct">
+    <xs:sequence>
+      <xs:element name="Id" type="AccountId" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="AccountId">
+    <xs:restriction base="xs:integer" />
+  </xs:simpleType>
+  <xs:complexType name="ExpInfo">
+    <xs:sequence>
+      <xs:element name="ExpFileNm" type="Name" />
+      <xs:element minOccurs="0" name="ExpFileSize" type="Size" />
+      <xs:element name="ExpFile" type="File" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Size">
+    <xs:restriction base="xs:integer" />
+  </xs:simpleType>
+</xs:schema>

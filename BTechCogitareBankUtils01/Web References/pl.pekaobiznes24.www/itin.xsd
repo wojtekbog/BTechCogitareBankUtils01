@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:ca:std:cdc:tech:xsd:itin.003.001.01" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:ca:std:cdc:tech:xsd:itin.003.001.01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Document" type="Document" />
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element name="FileTraInit" type="FileTransferInitiation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FileTransferInitiation">
+    <xs:sequence>
+      <xs:element name="GrpHdr" type="GrpHeader" />
+      <xs:element name="ImpInf" type="ImportInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GrpHeader">
+    <xs:sequence>
+      <xs:element name="MsgId" type="MessageId" />
+      <xs:element name="CreDtTm" type="CreDateAndTime" />
+      <xs:element minOccurs="0" name="InitgPty" type="PartyIdentification32" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartyIdentification32">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Nm" type="Max140Text" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessageId">
+    <xs:sequence>
+      <xs:element name="Id" type="Max35Text" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Max35Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="35" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CreDateAndTime">
+    <xs:restriction base="xs:dateTime" />
+  </xs:simpleType>
+  <xs:complexType name="ImportInfo">
+    <xs:sequence>
+      <xs:element name="ImpType" type="Name" />
+      <xs:element name="ImpFileNm" type="Name" />
+      <xs:element name="ImpFile" type="File" />
+      <xs:element minOccurs="0" name="ImpAddInfo" type="Name" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Name">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:simpleType name="File">
+    <xs:restriction base="xs:base64Binary" />
+  </xs:simpleType>
+  <xs:simpleType name="Bool">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="4" />
+      <xs:maxLength value="5" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max140Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="140" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

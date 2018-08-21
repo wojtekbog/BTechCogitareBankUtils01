@@ -36,10 +36,23 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Net" />
     <Reference Include="System.Security" />
     <Reference Include="System.Security.AccessControl, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.AccessControl.4.5.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.2\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
     </Reference>
     <Reference Include="System.Security.Cryptography.Xml, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Cryptography.Xml.4.5.0\lib\net461\System.Security.Cryptography.Xml.dll</HintPath>
@@ -52,6 +65,7 @@
     </Reference>
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -63,9 +77,157 @@
   <ItemGroup>
     <Compile Include="COM_Signing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\pl.pekaobiznes24.www\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\AccountHistoryResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\camt.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\camt0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\camt1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\camt2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\cmrq.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\cmrq0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\DepositTransferResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\DocumentListResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\DocumentResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\ExchangeTransferResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\FileTransferInitiationResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\GetAccountBalanceResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\GetExchangeRateResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\GetIntrestRateResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\ImportTransfersResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\itin.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\itin0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\itsr.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\pain.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\pain0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\pain1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\pamt.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\pamt0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\pamt1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\pamt2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\past.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\PaymentStatusResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\pekao.ccs.001.wsdl" />
+    <None Include="Web References\pl.pekaobiznes24.www\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\rpts.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\rpts0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\rpts1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\rpts2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\rpts3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\StatementResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\tsmt.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pl.pekaobiznes24.www\xmldsig-core-schema.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="https://www.pekaobiznes24.pl/pekao-ccs/ccs00101%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\pl.pekaobiznes24.www\</RelPath>
+      <UpdateFromURL>https://www.pekaobiznes24.pl/pekao-ccs/ccs00101%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>BTechCogitareBankUtils01_pl_pekaobiznes24_www_pekao_ccs_001_01</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

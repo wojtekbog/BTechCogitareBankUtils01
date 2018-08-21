@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:M1="urn:ca:std:ccs:tech:xsd:cmrq.001.001.02" xmlns:M26="urn:ca:std:cdc:tech:xsd:itin.003.001.01" xmlns:M4="urn:iso:std:iso:20022:tech:xsd:camt.053.001.02" xmlns:E1="urn:iso:std:iso:20022:tech:xsd:tsmt.016.001.03" xmlns:M9="urn:ca:std:ccs:tech:xsd:rpts.005.001.02" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:M7="urn:ca:std:ccs:tech:xsd:rpts.003.001.02" xmlns:M27="urn:swift:xsd:camt.003.001.04" xmlns:M23="urn:iso:std:iso:20022:tech:xsd:pain.008.001.02" xmlns:M21="urn:ca:std:ccs:tech:xsd:past.001.001.02" xmlns:M24="urn:ca:std:ccs:tech:xsd:itin.001.001.02" xmlns:M25="urn:ca:std:ccs:tech:xsd:itsr.001.001.02" xmlns:M2="urn:iso:std:iso:20022:tech:xsd:camt.052.001.02" xmlns:M20="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03" xmlns:M5="urn:ca:std:ccs:tech:xsd:rpts.001.001.02" xmlns:M22="urn:iso:std:iso:20022:tech:xsd:pain.002.001.03" xmlns:M30="urn:ca:std:cdc:tech:xsd:pamt.005.001.01" xmlns:M6="urn:ca:std:ccs:tech:xsd:rpts.002.001.02" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:M3="urn:ca:std:ccs:tech:xsd:cmrq.002.001.02" xmlns:M28="urn:swift:xsd:camt.004.001.04" xmlns:M29="urn:ca:std:cdc:tech:xsd:pamt.004.001.01" xmlns:M8="urn:ca:std:ccs:tech:xsd:rpts.004.001.02" xmlns:ccs="urn:ca:std:ccs:pekao:tech:wsdl:ws.001.01" xmlns:M31="urn:ca:std:cdc:tech:xsd:pamt.006.001.01" xmlns:M32="urn:ca:std:cdc:tech:xsd:pamt.007.001.01" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="pekao.ccs.001.01" targetNamespace="urn:ca:std:ccs:pekao:tech:wsdl:ws.001.01" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="urn:ca:std:ccs:pekao:tech:wsdl:ws.001.01" targetNamespace="urn:ca:std:ccs:pekao:tech:wsdl:ws.001.01">
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/tsmt.016.001.03.xsd" namespace="urn:iso:std:iso:20022:tech:xsd:tsmt.016.001.03" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/cmrq.001.001.02.xsd" namespace="urn:ca:std:ccs:tech:xsd:cmrq.001.001.02" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/camt.052.001.02.xsd" namespace="urn:iso:std:iso:20022:tech:xsd:camt.052.001.02" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/cmrq.002.001.02.xsd" namespace="urn:ca:std:ccs:tech:xsd:cmrq.002.001.02" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/camt.053.001.02.xsd" namespace="urn:iso:std:iso:20022:tech:xsd:camt.053.001.02" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/rpts.001.001.02.xsd" namespace="urn:ca:std:ccs:tech:xsd:rpts.001.001.02" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/rpts.002.001.02.xsd" namespace="urn:ca:std:ccs:tech:xsd:rpts.002.001.02" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/rpts.003.001.02.xsd" namespace="urn:ca:std:ccs:tech:xsd:rpts.003.001.02" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/rpts.004.001.02.xsd" namespace="urn:ca:std:ccs:tech:xsd:rpts.004.001.02" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/rpts.005.001.02.xsd" namespace="urn:ca:std:ccs:tech:xsd:rpts.005.001.02" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/pain.001.001.03.xsd" namespace="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/past.001.001.02.xsd" namespace="urn:ca:std:ccs:tech:xsd:past.001.001.02" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/pain.002.001.03.xsd" namespace="urn:iso:std:iso:20022:tech:xsd:pain.002.001.03" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/pain.008.001.02.xsd" namespace="urn:iso:std:iso:20022:tech:xsd:pain.008.001.02" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/itin.001.001.02.xsd" namespace="urn:ca:std:ccs:tech:xsd:itin.001.001.02" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/itin.003.001.01.xsd" namespace="urn:ca:std:cdc:tech:xsd:itin.003.001.01" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/itsr.001.001.02.xsd" namespace="urn:ca:std:ccs:tech:xsd:itsr.001.001.02" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/xmldsig-core-schema.xsd" namespace="http://www.w3.org/2000/09/xmldsig#" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/camt.003.001.04.xsd" namespace="urn:swift:xsd:camt.003.001.04" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/camt.004.001.04.xsd" namespace="urn:swift:xsd:camt.004.001.04" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/itin.003.001.01.xsd" namespace="urn:ca:std:cdc:tech:xsd:itin.003.001.01" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/pamt.004.001.01.xsd" namespace="urn:ca:std:cdc:tech:xsd:pamt.004.001.01" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/pamt.005.001.01.xsd" namespace="urn:ca:std:cdc:tech:xsd:pamt.005.001.01" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/pamt.006.001.01.xsd" namespace="urn:ca:std:cdc:tech:xsd:pamt.006.001.01" />
+      <xsd:import schemaLocation="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101?xsd=./../xsd/pamt.007.001.01.xsd" namespace="urn:ca:std:cdc:tech:xsd:pamt.007.001.01" />
+      <xsd:complexType name="AccountHistoryRequest">
+        <xsd:sequence>
+          <xsd:element ref="M1:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AccountHistoryResponse">
+        <xsd:sequence>
+          <xsd:element ref="M2:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetAccountReport" type="ccs:AccountHistoryRequest" />
+      <xsd:element name="GetAccountReportResponse" type="ccs:AccountHistoryResponse" />
+      <xsd:element name="GetIncrementalAccountReport" type="ccs:AccountHistoryRequest" />
+      <xsd:element name="GetIncrementalAccountReportResponse" type="ccs:AccountHistoryResponse" />
+      <xsd:complexType name="StatementRequest">
+        <xsd:sequence>
+          <xsd:element ref="M3:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="StatementResponse">
+        <xsd:choice>
+          <xsd:element ref="M4:Document" />
+          <xsd:element ref="M9:Document" />
+        </xsd:choice>
+      </xsd:complexType>
+      <xsd:element name="GetStatement" type="ccs:StatementRequest" />
+      <xsd:element name="GetStatementResponse" type="ccs:StatementResponse" />
+      <xsd:complexType name="TransferRequest">
+        <xsd:sequence>
+          <xsd:element ref="M20:Document" />
+          <xsd:element minOccurs="0" ref="ds:Signature" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DirectDebitRequest">
+        <xsd:sequence>
+          <xsd:element ref="M23:Document" />
+          <xsd:element minOccurs="0" ref="ds:Signature" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PaymentStatusRequest">
+        <xsd:sequence>
+          <xsd:element ref="M21:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PaymentStatusResponse">
+        <xsd:sequence>
+          <xsd:element ref="M22:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="DomesticTransfer" type="ccs:TransferRequest" />
+      <xsd:element name="DomesticTransferResponse" type="ccs:PaymentStatusResponse" />
+      <xsd:element name="SWETransfer" type="ccs:TransferRequest" />
+      <xsd:element name="SWETransferResponse" type="ccs:PaymentStatusResponse" />
+      <xsd:element name="InternalTransfer" type="ccs:TransferRequest" />
+      <xsd:element name="InternalTransferResponse" type="ccs:PaymentStatusResponse" />
+      <xsd:element name="ForeignTransfer" type="ccs:TransferRequest" />
+      <xsd:element name="ForeignTransferResponse" type="ccs:PaymentStatusResponse" />
+      <xsd:element name="SEPATransfer" type="ccs:TransferRequest" />
+      <xsd:element name="SEPATransferResponse" type="ccs:PaymentStatusResponse" />
+      <xsd:element name="MT101Transfer" type="ccs:TransferRequest" />
+      <xsd:element name="MT101TransferResponse" type="ccs:PaymentStatusResponse" />
+      <xsd:element name="GetPaymentStatusReport" type="ccs:PaymentStatusRequest" />
+      <xsd:element name="GetPaymentStatusReportResponse" type="ccs:PaymentStatusResponse" />
+      <xsd:element name="DirectDebitInitiation" type="ccs:DirectDebitRequest" />
+      <xsd:element name="DirectDebitInitiationResponse" type="ccs:PaymentStatusResponse" />
+      <xsd:complexType name="ImportTransfersRequest">
+        <xsd:sequence>
+          <xsd:element ref="M24:Document" />
+          <xsd:element minOccurs="0" ref="ds:Signature" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ImportTransfersResponse">
+        <xsd:sequence>
+          <xsd:element ref="M25:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ImportTransfersInitiation" type="ccs:ImportTransfersRequest" />
+      <xsd:element name="ImportTransfersInitiationResponse" type="ccs:ImportTransfersResponse" />
+      <xsd:complexType name="FileTransferRequest">
+        <xsd:sequence>
+          <xsd:element ref="M26:Document" />
+          <xsd:element minOccurs="0" ref="ds:Signature" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="FileTransferInitiationResponse">
+        <xsd:sequence>
+          <xsd:element ref="M22:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="FileTransferInitiation" type="ccs:FileTransferRequest" />
+      <xsd:element name="FileTransferInitiationResponse" type="ccs:FileTransferInitiationResponse" />
+      <xsd:complexType name="GetAccountBalanceRequest">
+        <xsd:sequence>
+          <xsd:element ref="M27:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="GetAccountBalanceResponse">
+        <xsd:sequence>
+          <xsd:element ref="M28:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetAccountBalance" type="ccs:GetAccountBalanceRequest" />
+      <xsd:element name="GetAccountBalanceResponse" type="ccs:GetAccountBalanceResponse" />
+      <xsd:complexType name="DocumentListRequest">
+        <xsd:sequence>
+          <xsd:element ref="M5:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DocumentListResponse">
+        <xsd:sequence>
+          <xsd:element ref="M6:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DocumentRequest">
+        <xsd:sequence>
+          <xsd:element ref="M8:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DocumentResponse">
+        <xsd:sequence>
+          <xsd:element ref="M9:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PrepareReportResponse">
+        <xsd:sequence>
+          <xsd:element ref="M7:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetDocumentList" type="ccs:DocumentListRequest" />
+      <xsd:element name="GetDocumentListResponse" type="ccs:DocumentListResponse" />
+      <xsd:element name="GetDocument" type="ccs:DocumentRequest" />
+      <xsd:element name="GetDocumentResponse" type="ccs:DocumentResponse" />
+      <xsd:element name="PrepareReport" type="ccs:PrepareReportResponse" />
+      <xsd:element name="PrepareReportResponse" type="ccs:DocumentListResponse" />
+      <xsd:element name="GetExchangeRate" type="ccs:GetExchangeRateRequest" />
+      <xsd:element name="GetExchangeRateResponse" type="ccs:GetExchangeRateResponse" />
+      <xsd:element name="ExchangeTransfer" type="ccs:ExchangeTransferRequest" />
+      <xsd:element name="ExchangeTransferResponse" type="ccs:ExchangeTransferResponse" />
+      <xsd:element name="GetIntrestRate" type="ccs:GetIntrestRateRequest" />
+      <xsd:element name="GetIntrestRateResponse" type="ccs:GetIntrestRateResponse" />
+      <xsd:element name="DepositTransfer" type="ccs:DepositTransferRequest" />
+      <xsd:element name="DepositTransferResponse" type="ccs:DepositTransferResponse" />
+      <xsd:complexType name="GetExchangeRateRequest">
+        <xsd:sequence>
+          <xsd:element ref="M29:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="GetExchangeRateResponse">
+        <xsd:sequence>
+          <xsd:element ref="M30:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ExchangeTransferRequest">
+        <xsd:sequence>
+          <xsd:element ref="M30:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ExchangeTransferResponse">
+        <xsd:sequence>
+          <xsd:element ref="M22:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="GetIntrestRateRequest">
+        <xsd:sequence>
+          <xsd:element ref="M31:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="GetIntrestRateResponse">
+        <xsd:sequence>
+          <xsd:element ref="M32:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DepositTransferRequest">
+        <xsd:sequence>
+          <xsd:element ref="M32:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DepositTransferResponse">
+        <xsd:sequence>
+          <xsd:element ref="M22:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="DepositTransferResponse">
+    <wsdl:part name="DepositTransferResponse" element="ccs:DepositTransferResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExchangeTransferRequest">
+    <wsdl:part name="ExchangeTransferRequest" element="ccs:ExchangeTransfer" />
+  </wsdl:message>
+  <wsdl:message name="ImportTransfersInitiation">
+    <wsdl:part name="ImportTransfersInitiation" element="ccs:ImportTransfersInitiation" />
+  </wsdl:message>
+  <wsdl:message name="GetAccountBalanceResponse">
+    <wsdl:part name="GetAccountBalanceResponse" element="ccs:GetAccountBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DirectDebitInitiation">
+    <wsdl:part name="DirectDebitInitiation" element="ccs:DirectDebitInitiation" />
+  </wsdl:message>
+  <wsdl:message name="DirectDebitInitiationResponse">
+    <wsdl:part name="DirectDebitInitiationResponse" element="ccs:DirectDebitInitiationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIntrestRateRequest">
+    <wsdl:part name="GetIntrestRateRequest" element="ccs:GetIntrestRate" />
+  </wsdl:message>
+  <wsdl:message name="FileTransferInitiation">
+    <wsdl:part name="FileTransferInitiation" element="ccs:FileTransferInitiation" />
+  </wsdl:message>
+  <wsdl:message name="SWETransfer">
+    <wsdl:part name="SWETransfer" element="ccs:SWETransfer" />
+  </wsdl:message>
+  <wsdl:message name="DomesticTransfer">
+    <wsdl:part name="DomesticTransfer" element="ccs:DomesticTransfer" />
+  </wsdl:message>
+  <wsdl:message name="ExchangeTransferResponse">
+    <wsdl:part name="ExchangeTransferResponse" element="ccs:ExchangeTransferResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStatementResponse">
+    <wsdl:part name="GetStatementResponse" element="ccs:GetStatementResponse" />
+  </wsdl:message>
+  <wsdl:message name="ImportTransfersInitiationResponse">
+    <wsdl:part name="ImportTransfersInitiationResponse" element="ccs:ImportTransfersInitiationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIncrementalAccountReportResponse">
+    <wsdl:part name="GetIncrementalAccountReportResponse" element="ccs:GetIncrementalAccountReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetExchangeRateRequest">
+    <wsdl:part name="GetExchangeRateRequest" element="ccs:GetExchangeRate" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentList">
+    <wsdl:part name="GetDocumentList" element="ccs:GetDocumentList" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentListResponse">
+    <wsdl:part name="GetDocumentListResponse" element="ccs:GetDocumentListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIntrestRateResponse">
+    <wsdl:part name="GetIntrestRateResponse" element="ccs:GetIntrestRateResponse" />
+  </wsdl:message>
+  <wsdl:message name="PrepareReportResponse">
+    <wsdl:part name="PrepareReportResponse" element="ccs:PrepareReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="DepositTransferRequest">
+    <wsdl:part name="DepositTransferRequest" element="ccs:DepositTransfer" />
+  </wsdl:message>
+  <wsdl:message name="DomesticTransferResponse">
+    <wsdl:part name="DomesticTransferResponse" element="ccs:DomesticTransferResponse" />
+  </wsdl:message>
+  <wsdl:message name="SEPATransferResponse">
+    <wsdl:part name="SEPATransferResponse" element="ccs:SEPATransferResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPaymentStatusReport">
+    <wsdl:part name="GetPaymentStatusReport" element="ccs:GetPaymentStatusReport" />
+  </wsdl:message>
+  <wsdl:message name="GetExchangeRateResponse">
+    <wsdl:part name="GetExchangeRateResponse" element="ccs:GetExchangeRateResponse" />
+  </wsdl:message>
+  <wsdl:message name="SWETransferResponse">
+    <wsdl:part name="SWETransferResponse" element="ccs:SWETransferResponse" />
+  </wsdl:message>
+  <wsdl:message name="InternalTransfer">
+    <wsdl:part name="InternalTransfer" element="ccs:InternalTransfer" />
+  </wsdl:message>
+  <wsdl:message name="FileTransferInitiationResponse">
+    <wsdl:part name="FileTransferInitiationResponse" element="ccs:FileTransferInitiationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPaymentStatusReportResponse">
+    <wsdl:part name="GetPaymentStatusReportResponse" element="ccs:GetPaymentStatusReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAccountReport">
+    <wsdl:part name="GetAccountReport" element="ccs:GetAccountReport" />
+  </wsdl:message>
+  <wsdl:message name="PrepareReport">
+    <wsdl:part name="PrepareReport" element="ccs:PrepareReport" />
+  </wsdl:message>
+  <wsdl:message name="ForeignTransfer">
+    <wsdl:part name="ForeignTransfer" element="ccs:ForeignTransfer" />
+  </wsdl:message>
+  <wsdl:message name="MT101Transfer">
+    <wsdl:part name="MT101Transfer" element="ccs:MT101Transfer" />
+  </wsdl:message>
+  <wsdl:message name="ForeignTransferResponse">
+    <wsdl:part name="ForeignTransferResponse" element="ccs:ForeignTransferResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIncrementalAccountReport">
+    <wsdl:part name="GetIncrementalAccountReport" element="ccs:GetIncrementalAccountReport" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentResponse">
+    <wsdl:part name="GetDocumentResponse" element="ccs:GetDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAccountBalance">
+    <wsdl:part name="GetAccountBalance" element="ccs:GetAccountBalance" />
+  </wsdl:message>
+  <wsdl:message name="InternalTransferResponse">
+    <wsdl:part name="InternalTransferResponse" element="ccs:InternalTransferResponse" />
+  </wsdl:message>
+  <wsdl:message name="ErrorReport">
+    <wsdl:part name="ErrorReport" element="E1:Document" />
+  </wsdl:message>
+  <wsdl:message name="GetDocument">
+    <wsdl:part name="GetDocument" element="ccs:GetDocument" />
+  </wsdl:message>
+  <wsdl:message name="GetAccountReportResponse">
+    <wsdl:part name="GetAccountReportResponse" element="ccs:GetAccountReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="MT101TransferResponse">
+    <wsdl:part name="MT101TransferResponse" element="ccs:MT101TransferResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStatement">
+    <wsdl:part name="GetStatement" element="ccs:GetStatement" />
+  </wsdl:message>
+  <wsdl:message name="SEPATransfer">
+    <wsdl:part name="SEPATransfer" element="ccs:SEPATransfer" />
+  </wsdl:message>
+  <wsdl:portType name="pekao.ccs.001.01">
+    <wsdl:operation name="GetAccountReport">
+      <wsdl:input message="ccs:GetAccountReport" />
+      <wsdl:output message="ccs:GetAccountReportResponse" />
+      <wsdl:fault name="ErrorReport" message="ccs:ErrorReport" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIncrementalAccountReport">
+      <wsdl:input message="ccs:GetIncrementalAccountReport" />
+      <wsdl:output message="ccs:GetIncrementalAccountReportResponse" />
+      <wsdl:fault name="ErrorReport" message="ccs:ErrorReport" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatement">
+      <wsdl:input message="ccs:GetStatement" />
+      <wsdl:output message="ccs:GetStatementResponse" />
+      <wsdl:fault name="ErrorReport" message="ccs:ErrorReport" />
+    </wsdl:operation>
+    <wsdl:operation name="DomesticTransfer">
+      <wsdl:input message="ccs:DomesticTransfer" />
+      <wsdl:output message="ccs:DomesticTransferResponse" />
+      <wsdl:fault name="ErrorReport" message="ccs:ErrorReport" />
+    </wsdl:operation>
+    <wsdl:operation name="SWETransfer">
+      <wsdl:input message="ccs:SWETransfer" />
+      <wsdl:output message="ccs:SWETransferResponse" />
+      <wsdl:fault name="ErrorReport" message="ccs:ErrorReport" />
+    </wsdl:operation>
+    <wsdl:operation name="InternalTransfer">
+      <wsdl:input message="ccs:InternalTransfer" />
+      <wsdl:output message="ccs:InternalTransferResponse" />
+      <wsdl:fault name="ErrorReport" message="ccs:ErrorReport" />
+    </wsdl:operation>
+    <wsdl:operation name="ForeignTransfer">
+      <wsdl:input message="ccs:ForeignTransfer" />
+      <wsdl:output message="ccs:ForeignTransferResponse" />
+      <wsdl:fault name="ErrorReport" message="ccs:ErrorReport" />
+    </wsdl:operation>
+    <wsdl:operation name="SEPATransfer">
+      <wsdl:input message="ccs:SEPATransfer" />
+      <wsdl:output message="ccs:SEPATransferResponse" />
+      <wsdl:fault name="ErrorReport" message="ccs:ErrorReport" />
+    </wsdl:operation>
+    <wsdl:operation name="MT101Transfer">
+      <wsdl:input message="ccs:MT101Transfer" />
+      <wsdl:output message="ccs:MT101TransferResponse" />
+      <wsdl:fault name="ErrorReport" message="ccs:ErrorReport" />
+    </wsdl:operation>
+    <wsdl:operation name="DirectDebitInitiation">
+      <wsdl:input message="ccs:DirectDebitInitiation" />
+      <wsdl:output message="ccs:DirectDebitInitiationResponse" />
+      <wsdl:fault name="ErrorReport" message="ccs:ErrorReport" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentStatusReport">
+      <wsdl:input message="ccs:GetPaymentStatusReport" />
+      <wsdl:output message="ccs:GetPaymentStatusReportResponse" />
+      <wsdl:fault name="ErrorReport" message="ccs:ErrorReport" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportTransfersInitiation">
+      <wsdl:input message="ccs:ImportTransfersInitiation" />
+      <wsdl:output message="ccs:ImportTransfersInitiationResponse" />
+      <wsdl:fault name="ErrorReport" message="ccs:ErrorReport" />
+    </wsdl:operation>
+    <wsdl:operation name="FileTransferInitiation">
+      <wsdl:input message="ccs:FileTransferInitiation" />
+      <wsdl:output message="ccs:FileTransferInitiationResponse" />
+      <wsdl:fault name="ErrorReport" message="ccs:ErrorReport" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountBalance">
+      <wsdl:input message="ccs:GetAccountBalance" />
+      <wsdl:output message="ccs:GetAccountBalanceResponse" />
+      <wsdl:fault name="ErrorReport" message="ccs:ErrorReport" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentList">
+      <wsdl:input message="ccs:GetDocumentList" />
+      <wsdl:output message="ccs:GetDocumentListResponse" />
+      <wsdl:fault name="ErrorReport" message="ccs:ErrorReport" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocument">
+      <wsdl:input message="ccs:GetDocument" />
+      <wsdl:output message="ccs:GetDocumentResponse" />
+      <wsdl:fault name="ErrorReport" message="ccs:ErrorReport" />
+    </wsdl:operation>
+    <wsdl:operation name="PrepareReport">
+      <wsdl:input message="ccs:PrepareReport" />
+      <wsdl:output message="ccs:PrepareReportResponse" />
+      <wsdl:fault name="ErrorReport" message="ccs:ErrorReport" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExchangeRate">
+      <wsdl:input message="ccs:GetExchangeRateRequest" />
+      <wsdl:output message="ccs:GetExchangeRateResponse" />
+      <wsdl:fault name="ErrorReport" message="ccs:ErrorReport" />
+    </wsdl:operation>
+    <wsdl:operation name="ExchangeTransfer">
+      <wsdl:input message="ccs:ExchangeTransferRequest" />
+      <wsdl:output message="ccs:ExchangeTransferResponse" />
+      <wsdl:fault name="ErrorReport" message="ccs:ErrorReport" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIntrestRate">
+      <wsdl:input message="ccs:GetIntrestRateRequest" />
+      <wsdl:output message="ccs:GetIntrestRateResponse" />
+      <wsdl:fault name="ErrorReport" message="ccs:ErrorReport" />
+    </wsdl:operation>
+    <wsdl:operation name="DepositTransfer">
+      <wsdl:input message="ccs:DepositTransferRequest" />
+      <wsdl:output message="ccs:DepositTransferResponse" />
+      <wsdl:fault name="ErrorReport" message="ccs:ErrorReport" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="pekao.ccs.001.01SOAP" type="ccs:pekao.ccs.001.01">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAccountReport">
+      <soap:operation soapAction="urn:ca:std:ccs:pekao:tech:wsdl:ws.001.01/GetAccountReport" />
+      <wsdl:input>
+        <soap:body use="literal" parts="GetAccountReport" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="GetAccountReportResponse" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorReport">
+        <soap:fault use="literal" name="ErrorReport" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetIncrementalAccountReport">
+      <soap:operation soapAction="urn:ca:std:ccs:pekao:tech:wsdl:ws.001.01/GetIncrementalAccountReport" />
+      <wsdl:input>
+        <soap:body use="literal" parts="GetIncrementalAccountReport" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="GetIncrementalAccountReportResponse" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorReport">
+        <soap:fault use="literal" name="ErrorReport" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatement">
+      <soap:operation soapAction="urn:ca:std:ccs:pekao:tech:wsdl:ws.001.01/GetStatement" />
+      <wsdl:input>
+        <soap:body use="literal" parts="GetStatement" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="GetStatementResponse" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorReport">
+        <soap:fault use="literal" name="ErrorReport" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DomesticTransfer">
+      <soap:operation soapAction="urn:ca:std:ccs:pekao:tech:wsdl:ws.001.01/DomesticTransfer" />
+      <wsdl:input>
+        <soap:body use="literal" parts="DomesticTransfer" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="DomesticTransferResponse" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorReport">
+        <soap:fault use="literal" name="ErrorReport" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SWETransfer">
+      <soap:operation soapAction="urn:ca:std:ccs:pekao:tech:wsdl:ws.001.01/SWETransfer" />
+      <wsdl:input>
+        <soap:body use="literal" parts="SWETransfer" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="SWETransferResponse" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorReport">
+        <soap:fault use="literal" name="ErrorReport" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="InternalTransfer">
+      <soap:operation soapAction="urn:ca:std:ccs:pekao:tech:wsdl:ws.001.01/InternalTransfer" />
+      <wsdl:input>
+        <soap:body use="literal" parts="InternalTransfer" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="InternalTransferResponse" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorReport">
+        <soap:fault use="literal" name="ErrorReport" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ForeignTransfer">
+      <soap:operation soapAction="urn:ca:std:ccs:pekao:tech:wsdl:ws.001.01/ForeignTransfer" />
+      <wsdl:input>
+        <soap:body use="literal" parts="ForeignTransfer" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="ForeignTransferResponse" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorReport">
+        <soap:fault use="literal" name="ErrorReport" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SEPATransfer">
+      <soap:operation soapAction="urn:ca:std:ccs:pekao:tech:wsdl:ws.001.01/SEPATransfer" />
+      <wsdl:input>
+        <soap:body use="literal" parts="SEPATransfer" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="SEPATransferResponse" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorReport">
+        <soap:fault use="literal" name="ErrorReport" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="MT101Transfer">
+      <soap:operation soapAction="urn:ca:std:ccs:pekao:tech:wsdl:ws.001.01/MT101Transfer" />
+      <wsdl:input>
+        <soap:body use="literal" parts="MT101Transfer" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="MT101TransferResponse" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorReport">
+        <soap:fault use="literal" name="ErrorReport" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DirectDebitInitiation">
+      <soap:operation soapAction="urn:ca:std:ccs:pekao:tech:wsdl:ws.001.01/DirectDebitInitiation" />
+      <wsdl:input>
+        <soap:body use="literal" parts="DirectDebitInitiation" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="DirectDebitInitiationResponse" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorReport">
+        <soap:fault use="literal" name="ErrorReport" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentStatusReport">
+      <soap:operation soapAction="urn:ca:std:ccs:pekao:tech:wsdl:ws.001.01/GetPaymentStatusReport" />
+      <wsdl:input>
+        <soap:body use="literal" parts="GetPaymentStatusReport" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="GetPaymentStatusReportResponse" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorReport">
+        <soap:fault use="literal" name="ErrorReport" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ImportTransfersInitiation">
+      <soap:operation soapAction="urn:ca:std:ccs:pekao:tech:wsdl:ws.001.01/ImportTransfersInitiation" />
+      <wsdl:input>
+        <soap:body use="literal" parts="ImportTransfersInitiation" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="ImportTransfersInitiationResponse" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorReport">
+        <soap:fault use="literal" name="ErrorReport" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="FileTransferInitiation">
+      <soap:operation soapAction="urn:ca:std:ccs:pekao:tech:wsdl:ws.001.01/FileTransferInitiation" />
+      <wsdl:input>
+        <soap:body use="literal" parts="FileTransferInitiation" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="FileTransferInitiationResponse" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorReport">
+        <soap:fault use="literal" name="ErrorReport" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountBalance">
+      <soap:operation soapAction="urn:ca:std:ccs:pekao:tech:wsdl:ws.001.01/GetAccountBalance" />
+      <wsdl:input>
+        <soap:body use="literal" parts="GetAccountBalance" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="GetAccountBalanceResponse" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorReport">
+        <soap:fault use="literal" name="ErrorReport" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentList">
+      <soap:operation soapAction="urn:ca:std:ccs:pekao:tech:wsdl:ws.001.01/GetDocumentList" />
+      <wsdl:input>
+        <soap:body use="literal" parts="GetDocumentList" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="GetDocumentListResponse" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorReport">
+        <soap:fault use="literal" name="ErrorReport" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocument">
+      <soap:operation soapAction="urn:ca:std:ccs:pekao:tech:wsdl:ws.001.01/GetDocument" />
+      <wsdl:input>
+        <soap:body use="literal" parts="GetDocument" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="GetDocumentResponse" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorReport">
+        <soap:fault use="literal" name="ErrorReport" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="PrepareReport">
+      <soap:operation soapAction="urn:ca:std:ccs:pekao:tech:wsdl:ws.001.01/PrepareReport" />
+      <wsdl:input>
+        <soap:body use="literal" parts="PrepareReport" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="PrepareReportResponse" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorReport">
+        <soap:fault use="literal" name="ErrorReport" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetExchangeRate">
+      <soap:operation soapAction="urn:ca:std:cdc:tech:wsdl:cdc.ws.001.01/GetExchangeRate" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorReport">
+        <soap:fault use="literal" name="ErrorReport" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ExchangeTransfer">
+      <soap:operation soapAction="urn:ca:std:cdc:tech:wsdl:cdc.ws.001.01/ExchangeTransfer" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorReport">
+        <soap:fault use="literal" name="ErrorReport" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetIntrestRate">
+      <soap:operation soapAction="urn:ca:std:cdc:tech:wsdl:cdc.ws.001.01/GetIntrestRate" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorReport">
+        <soap:fault use="literal" name="ErrorReport" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DepositTransfer">
+      <soap:operation soapAction="urn:ca:std:cdc:tech:wsdl:cdc.ws.001.01/DepositTransfer" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorReport">
+        <soap:fault use="literal" name="ErrorReport" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="pekao.ccs.001.01">
+    <wsdl:port name="pekao.ccs.001.01SOAP" binding="ccs:pekao.ccs.001.01SOAP">
+      <soap:address location="http://www.pekaobiznes24.pl/pekao-ccs/ccs00101" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:ca:std:cdc:tech:xsd:pamt.006.001.01" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:ca:std:cdc:tech:xsd:pamt.006.001.01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Document" type="Document" />
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element name="GetIntrRate" type="GetIntrestRate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetIntrestRate">
+    <xs:sequence>
+      <xs:element name="GrpHdr" type="GroupHeader" />
+      <xs:element name="PmtInf" type="PaymentInformation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GroupHeader">
+    <xs:sequence>
+      <xs:element name="MsgId" type="Max35Text" />
+      <xs:element name="CreDtTm" type="ISODateTime" />
+      <xs:element name="NbOfTxs" type="NumberOfTransactions" />
+      <xs:element name="InitgPty" type="PartyIdentification" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PaymentInformation">
+    <xs:sequence>
+      <xs:element name="PmtMtd" type="PaymentMetod" />
+      <xs:element name="ReqdExctnDt" type="ISODateTime" />
+      <xs:element name="Dbtr" type="Debtor" />
+      <xs:element name="DbtrAcct" type="DebtorAcct" />
+      <xs:element name="DbtrAgt" type="DebtorAgt" />
+      <xs:element name="CdtTrfTxInf" type="CreditorTrfTxInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartyIdentification">
+    <xs:sequence>
+      <xs:element name="Nm" type="Max70Text" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Id" type="Party" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Party">
+    <xs:sequence>
+      <xs:element name="PrvtId" type="PersonIdentification" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PersonIdentification">
+    <xs:sequence>
+      <xs:element name="Othr" type="GenericPersonIdentification" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GenericPersonIdentification">
+    <xs:sequence>
+      <xs:element name="Id" type="Max35Text" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Debtor">
+    <xs:sequence>
+      <xs:element name="Nm" type="Max70Text" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PstlAdr" type="Address" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Address">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="2" name="AdrLine" type="Max35Text" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Ctry" type="Country" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DebtorAcct">
+    <xs:sequence>
+      <xs:element name="Id" type="AccountId" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AccountId">
+    <xs:sequence>
+      <xs:element name="Othr" type="AccountIdentification" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AccountIdentification">
+    <xs:sequence>
+      <xs:element name="Id" type="AccId" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DebtorAgt">
+    <xs:sequence>
+      <xs:element name="FinInstnId" type="FinInstanceId" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FinInstanceId">
+    <xs:sequence>
+      <xs:element name="ClrSysId" type="ClearingSystemIdentification" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ClearingSystemIdentification">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="Cd" type="ClearingSystemMemberIdentification" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ClearingSystemMemberIdentification">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="MmbId" type="MemberIdentification" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CreditorTrfTxInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="PmtTpInf" type="PaymentTypeInformation" />
+      <xs:element name="Amt" type="Amount" />
+      <xs:element name="DepInfo" type="DepositInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PaymentTypeInformation">
+    <xs:sequence>
+      <xs:element name="CtgyPurp" type="CategoryPurpose1Choice" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Amount">
+    <xs:sequence>
+      <xs:element name="InstdAmt" type="InstdAmount" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InstdAmount">
+    <xs:simpleContent>
+      <xs:extension base="xs:double">
+        <xs:attribute name="Ccy" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="CategoryPurpose1Choice">
+    <xs:sequence>
+      <xs:element name="Cd" type="Category" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DepositInfo">
+    <xs:sequence>
+      <xs:element name="Dur" type="Duration" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Category">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INTC" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max35Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="35" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max70Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="70" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ISODateTime">
+    <xs:restriction base="xs:dateTime" />
+  </xs:simpleType>
+  <xs:simpleType name="NumberOfTransactions">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:totalDigits value="15" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Duration">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:totalDigits value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PaymentMetod">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TRF" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Country">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z]{2,2}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AccId">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[1-9]{26,26}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MemberIdentification">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[1-9]{8,8}" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

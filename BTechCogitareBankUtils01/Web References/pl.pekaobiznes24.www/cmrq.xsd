@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:ca:std:ccs:tech:xsd:cmrq.002.001.02" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:ca:std:ccs:tech:xsd:cmrq.002.001.02" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Document" type="Document" />
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element name="GetStmt" type="GetStatement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetStatement">
+    <xs:sequence>
+      <xs:element name="MsgId" type="MessageIdentyfication" />
+      <xs:element name="StmtQryDef" type="StatementQueryDefinition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessageIdentyfication">
+    <xs:sequence>
+      <xs:element name="Id" type="Max35Text" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StatementQueryDefinition">
+    <xs:sequence>
+      <xs:element name="StmtCrit" type="StatementCriteria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StatementCriteria">
+    <xs:sequence>
+      <xs:element name="NewCrit" type="NewCriteria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NewCriteria">
+    <xs:sequence>
+      <xs:element name="SchCrit" type="SearchCriteria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SearchCriteria">
+    <xs:sequence>
+      <xs:element name="AcctId" type="AccountIdentification" />
+      <xs:element name="StmtValDt" type="StatementValueSearch" />
+      <xs:element minOccurs="0" name="StmtId" type="StatementId" />
+      <xs:element minOccurs="0" name="StmtFrmt" type="StatementFormat" />
+      <xs:element minOccurs="0" name="ConfOpInd" type="TrueFalseIndicator" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AccountIdentification">
+    <xs:sequence>
+      <xs:element name="EQ" type="AccountIdentification3Choice" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StatementValueSearch">
+    <xs:sequence>
+      <xs:element name="DtSch" type="DatePeriodDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StatementId">
+    <xs:sequence>
+      <xs:element name="EQ" type="StatementIdentification" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AccountIdentification3Choice">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="IBAN" type="IBANIdentifier" />
+        <xs:element name="BBAN" type="BBANIdentifier" />
+        <xs:element name="UPIC" type="UPICIdentifier" />
+        <xs:element name="PrtryAcct" type="SimpleIdentificationInformation2" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="IBANIdentifier">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="BBANIdentifier">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9]{1,30}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="UPICIdentifier">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{8,17}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="SimpleIdentificationInformation2">
+    <xs:sequence>
+      <xs:element name="Id" type="Max35Text" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DatePeriodDetails">
+    <xs:choice>
+      <xs:element name="Dt" type="ISODate" />
+      <xs:element name="Year" type="YearType" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:simpleType name="Max35Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="35" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ISODate">
+    <xs:restriction base="xs:date" />
+  </xs:simpleType>
+  <xs:simpleType name="StatementFormat">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PDF" />
+      <xs:enumeration value="XML" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="StatementIdentification">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[1-9][0-9]{0,2}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="YearType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[1-9][0-9]{3}" />
+      <xs:length value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TrueFalseIndicator">
+    <xs:restriction base="xs:boolean" />
+  </xs:simpleType>
+</xs:schema>

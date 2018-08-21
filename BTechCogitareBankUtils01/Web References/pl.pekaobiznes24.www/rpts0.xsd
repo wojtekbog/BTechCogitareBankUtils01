@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:ca:std:ccs:tech:xsd:rpts.005.001.02" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:ca:std:ccs:tech:xsd:rpts.005.001.02" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Document" type="Document" />
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element name="Rpt" type="BankToCustomerDocument" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BankToCustomerDocument">
+    <xs:sequence>
+      <xs:element name="MsgId" type="MessageIdentification" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RptDtls" type="DocumentDetails" />
+      <xs:element minOccurs="0" name="OprlErr" type="OperationalError" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessageIdentification">
+    <xs:sequence>
+      <xs:element name="Id" type="Max35Text" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Max35Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="35" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DocumentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RptSts" type="Max30CapitalText" />
+      <xs:element minOccurs="0" name="RptNm" type="Max70Text" />
+      <xs:element minOccurs="0" name="RptCreDt" type="ISODate" />
+      <xs:element minOccurs="0" name="RptType" type="Max4CapitalText" />
+      <xs:element minOccurs="0" name="RptKind" type="Max4CapitalText" />
+      <xs:element minOccurs="0" name="RptSize" type="Max18NumericText" />
+      <xs:element minOccurs="0" name="RptFile" type="File" />
+      <xs:element minOccurs="0" name="FileChecksum" type="Only32Text" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Max30CapitalText">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z]{1,30}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max70Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="70" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ISODate">
+    <xs:restriction base="xs:date" />
+  </xs:simpleType>
+  <xs:simpleType name="Max4CapitalText">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z]{1,4}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max18NumericText">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{1,18}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="File">
+    <xs:restriction base="xs:base64Binary" />
+  </xs:simpleType>
+  <xs:simpleType name="Only32Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="32" />
+      <xs:maxLength value="32" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="OperationalError">
+    <xs:sequence>
+      <xs:element name="Err" type="Error" />
+      <xs:element name="Desc" type="Max140Text" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Error">
+    <xs:sequence>
+      <xs:element name="Prtry" type="Const4CapitalNumericText" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Const4CapitalNumericText">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z0-9]{4,4}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max140Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="140" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

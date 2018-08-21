@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:ca:std:ccs:tech:xsd:past.001.001.02" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:ca:std:ccs:tech:xsd:past.001.001.02" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Document" type="Document" />
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element name="GetPayStsRpt" type="GetPaymentStatusReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetPaymentStatusReport">
+    <xs:sequence>
+      <xs:element name="GrpHdr" type="GrpHeader" />
+      <xs:element name="OrgnlGrpInfAndSts" type="OriginalGrpInfoAndStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GrpHeader">
+    <xs:sequence>
+      <xs:element name="MsgId" type="MessageId" />
+      <xs:element name="CreDtTm" type="CreDateAndTime" />
+      <xs:element minOccurs="0" name="InitgPty" type="InitiatorPty" />
+      <xs:element minOccurs="0" name="DbtrAgt" type="DebtorAgt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessageId">
+    <xs:sequence>
+      <xs:element name="Id" type="Max35Text" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Max35Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="35" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CreDateAndTime">
+    <xs:restriction base="xs:dateTime" />
+  </xs:simpleType>
+  <xs:complexType name="InitiatorPty">
+    <xs:sequence>
+      <xs:element name="Nm" type="Name" />
+      <xs:element name="PstlAdr" type="PstlAddress" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Name">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:complexType name="PstlAddress">
+    <xs:sequence>
+      <xs:element name="StrtNm" type="StreetName" />
+      <xs:element name="BldgNb" type="BouldingNumber" />
+      <xs:element name="PstCd" type="PostalCode" />
+      <xs:element name="TwnNm" type="TownName" />
+      <xs:element name="Ctry" type="Country" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="StreetName">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:simpleType name="BouldingNumber">
+    <xs:restriction base="xs:integer" />
+  </xs:simpleType>
+  <xs:simpleType name="PostalCode">
+    <xs:restriction base="xs:integer" />
+  </xs:simpleType>
+  <xs:simpleType name="TownName">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:simpleType name="Country">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:complexType name="DebtorAgt">
+    <xs:sequence>
+      <xs:element name="FinInstnId" type="FinInstanceId" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FinInstanceId">
+    <xs:sequence>
+      <xs:element name="BIC" type="BICid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="BICid">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:complexType name="OriginalGrpInfoAndStatus">
+    <xs:sequence>
+      <xs:element name="OrgnlMsgId" type="Max35Text" />
+      <xs:element minOccurs="0" name="OrgnlMsgNmId" type="Name" />
+      <xs:element minOccurs="0" name="OrgnlCreDtTm" type="CreDateAndTime" />
+      <xs:element minOccurs="0" name="OrgnlNbOfTxs" type="OriginalNumberOfTxs" />
+      <xs:element minOccurs="0" name="OrgnlCtrlSum" type="OriginalCtrlSum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="OriginalNumberOfTxs">
+    <xs:restriction base="xs:integer" />
+  </xs:simpleType>
+  <xs:simpleType name="OriginalCtrlSum">
+    <xs:restriction base="xs:integer" />
+  </xs:simpleType>
+</xs:schema>

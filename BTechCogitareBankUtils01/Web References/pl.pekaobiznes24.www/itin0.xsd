@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:ca:std:ccs:tech:xsd:itin.001.001.02" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:ca:std:ccs:tech:xsd:itin.001.001.02" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Document" type="Document" />
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element name="ImpTraInit" type="ImportTransfersInitiation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ImportTransfersInitiation">
+    <xs:sequence>
+      <xs:element name="GrpHdr" type="GrpHeader" />
+      <xs:element name="ImpInfo" type="ImportInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GrpHeader">
+    <xs:sequence>
+      <xs:element name="MsgId" type="MessageId" />
+      <xs:element name="CreDtTm" type="CreDateAndTime" />
+      <xs:element minOccurs="0" name="InitgPty" type="PartyIdentification32" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartyIdentification32">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Nm" type="Max140Text" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessageId">
+    <xs:sequence>
+      <xs:element name="Id" type="Max35Text" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Max35Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="35" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CreDateAndTime">
+    <xs:restriction base="xs:dateTime" />
+  </xs:simpleType>
+  <xs:complexType name="ImportInfo">
+    <xs:sequence>
+      <xs:element name="ImpTmpNm" type="Name" />
+      <xs:element name="ImpPackageName" type="Name" />
+      <xs:element minOccurs="0" name="ImpPackageType" type="Name" />
+      <xs:element name="ImpFileNm" type="Name" />
+      <xs:element minOccurs="0" name="ImpFileEncoding" type="Name" />
+      <xs:element name="ImpFile" type="File" />
+      <xs:element minOccurs="0" name="ImpValidData" type="Bool" />
+      <xs:element minOccurs="0" name="ExpWrongDataFile" type="Bool" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Name">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:simpleType name="File">
+    <xs:restriction base="xs:base64Binary" />
+  </xs:simpleType>
+  <xs:simpleType name="Bool">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="4" />
+      <xs:maxLength value="5" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max140Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="140" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:ca:std:ccs:tech:xsd:rpts.001.001.02" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:ca:std:ccs:tech:xsd:rpts.001.001.02" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Document" type="Document" />
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element name="GetRptLst" type="GetDocumentList" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetDocumentList">
+    <xs:sequence>
+      <xs:element name="MsgId" type="MessageIdentification" />
+      <xs:element name="RptLstQryDef" type="DocumentListQueryDefinition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessageIdentification">
+    <xs:sequence>
+      <xs:element name="Id" type="Max35Text" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Max35Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="35" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DocumentListQueryDefinition">
+    <xs:sequence>
+      <xs:element name="RptLstCrit" type="ReportListCriteria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReportListCriteria">
+    <xs:sequence>
+      <xs:element name="NewCrit" type="NewCriteria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NewCriteria">
+    <xs:sequence>
+      <xs:element name="SchCrit" type="SearchCriteria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SearchCriteria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RptType" type="Max4CapitalText" />
+      <xs:element minOccurs="0" name="RptKind" type="Max6CapitalText" />
+      <xs:element name="RptValDt" type="ReportValDate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Max4CapitalText">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z]{1,4}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max6CapitalText">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z]{1,6}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ReportValDate">
+    <xs:sequence>
+      <xs:element name="DtSch" type="DatePeriodDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DatePeriodDetails">
+    <xs:sequence>
+      <xs:element name="FrDt" type="ISODate" />
+      <xs:element name="ToDt" type="ISODate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ISODate">
+    <xs:restriction base="xs:date" />
+  </xs:simpleType>
+</xs:schema>
