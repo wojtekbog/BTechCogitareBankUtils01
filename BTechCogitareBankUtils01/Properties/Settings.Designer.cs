@@ -26,7 +26,7 @@ namespace BTechCogitareBankUtils01.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://www.pekaobiznes24.pl/pekao-ccs/ccs00101")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.pekaobiznes24.pl/pekao-ccs/ccs00101")]
         public string BTechCogitareBankUtils01_pl_pekaobiznes24_www_pekao_ccs_001_01 {
             get {
                 return ((string)(this["BTechCogitareBankUtils01_pl_pekaobiznes24_www_pekao_ccs_001_01"]));

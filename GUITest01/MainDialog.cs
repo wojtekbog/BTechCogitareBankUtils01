@@ -37,7 +37,6 @@ namespace GUITest01
             peako.GetStatement loStatement;
             peako.StatementRequest loRequest;
             peako.StatementResponse loResponse;
-            String lvXml = textXml.Text;
 
             loMsgId = new peako.MessageIdentyfication1();
             loMsgId.Id = "GS201109050031111111";
@@ -51,7 +50,6 @@ namespace GUITest01
             loQuery.StmtCrit.NewCrit.SchCrit.StmtValDt = new peako.StatementValueSearch();
             loQuery.StmtCrit.NewCrit.SchCrit.StmtValDt.DtSch = new peako.DatePeriodDetails2();
             loQuery.StmtCrit.NewCrit.SchCrit.StmtValDt.DtSch.Item = new DateTime(2018, 04, 23);
-
 
             loQuery.StmtCrit.NewCrit.SchCrit.AcctId.EQ = new peako.AccountIdentification3Choice1
             {
@@ -69,13 +67,23 @@ namespace GUITest01
 
             try
            {
-                loWSDL.ClientCertificates.Add(new X509Certificate2("d:\\projekty\\btech\\cogitare\\przelewy-bankowe\\wsdl\\certificates\\cis_22705460.p12"));
+                loWSDL.ClientCertificates.Add(new X509Certificate2(certFName.Text));
+                loWSDL.PreAuthenticate = false;
                 loResponse = loWSDL.GetStatement(loRequest);
                 MessageBox.Show(loResponse.ToString());
 
             } catch(Exception loError)
             {
                 MessageBox.Show(loError.ToString());
+            }
+        }
+
+        private void F4_Click(object sender, EventArgs e)
+        {
+            DialogResult loResult = openFileCert.ShowDialog();
+            if (loResult == DialogResult.OK)
+            {
+                certFName.Text = openFileCert.FileName;
             }
         }
     }
