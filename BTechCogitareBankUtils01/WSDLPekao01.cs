@@ -89,5 +89,27 @@ namespace BTechCogitareBankUtils01
             }
             return "Error";
         }
+
+        public static string getAccountBalance(string cert, string MsgId)
+        {
+            peako.pekaoccs00101 loWSDL = new peako.pekaoccs00101();
+            peako.MessageIdentyfication1 loMsgId;
+            peako.AccountQueryDefinition4 loQuery;
+            peako.GetAccountBalanceRequest loBalance;
+
+            peako.StatementRequest loRequest;
+            peako.StatementResponse loResponse;
+
+            loMsgId = new peako.MessageIdentyfication1();
+            loMsgId.Id = MsgId;
+
+            loQuery = new peako.AccountQueryDefinition4();
+            loQuery.AcctCrit = new peako.AccountCriteriaDefinition4Choice();
+            //loQuery.AcctCrit.
+
+
+
+            return "Error";
+        }
     }
 }

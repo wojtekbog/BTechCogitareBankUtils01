@@ -16,7 +16,7 @@
             <TextBlock Text="Choose method:" Margin="10,0,0,0"/>
             <ListBox x:Name="MethodList" Padding="5" Margin="10">
                 <ListBoxItem Content="GetStatement"/>
-                <ListBoxItem Content="item2"/>
+                <ListBoxItem Content="GetAccountBalance"/>
                 <ListBoxItem Content="item3"/>
                 <ListBoxItem Content="item4"/>
                 <ListBoxItem Content="item5"/>
@@ -31,6 +31,7 @@
                 <DatePicker x:Name="DatePicker1" Height="25" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="115" />
                 <DatePicker x:Name="DatePicker2" Height="25" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="115" />
             </WrapPanel>
+            <ToggleButton x:Name="Toggle1" Click="ToggleButton_Click"/>
             <ListBox x:Name="PropertyList" Visibility="Hidden" Margin="10" Width="100" HorizontalAlignment="Left">
                 <ListBoxItem x:Name="property1"/>
                 <ListBoxItem x:Name="property2"/>
@@ -55,7 +56,6 @@
                 <TextBlock x:Name="t5" Text="tekst 5" Width="150" Padding="5" Margin="10"/>
                 <TextBox x:Name="tb5" Width="300" Padding="5" Margin="10"/>
             </WrapPanel>
-            <ToggleButton x:Name="Toggle1" Click="ToggleButton_Click"/>
         </StackPanel>
     </Grid>
 </Window>

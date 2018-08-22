@@ -30,6 +30,25 @@ namespace GUITest02
         public MainWindow()
         {
             InitializeComponent();
+
+            DatePicker1.Visibility = Visibility.Hidden;
+            DatePicker2.Visibility = Visibility.Hidden;
+
+            Toggle1.Visibility = Visibility.Hidden;
+
+            t1.Visibility = Visibility.Hidden;
+            t2.Visibility = Visibility.Hidden;
+            t3.Visibility = Visibility.Hidden;
+            t4.Visibility = Visibility.Hidden;
+            t5.Visibility = Visibility.Hidden;
+
+            tb1.Visibility = Visibility.Hidden;
+            tb2.Visibility = Visibility.Hidden;
+            tb3.Visibility = Visibility.Hidden;
+            tb4.Visibility = Visibility.Hidden;
+            tb5.Visibility = Visibility.Hidden;
+
+
         }
 
         string gvfile;
@@ -60,7 +79,8 @@ namespace GUITest02
                     else
                         gvresponse = WSDLPekao01.getStatement(gvfile, tb1.Text, tb2.Text, false, DatePicker1.SelectedDate.Value.Date, lvformat);
                     break;
-                case 1:
+
+                case 1: //GetAccountBalance
 
                     break;
                 case 2:
@@ -90,7 +110,8 @@ namespace GUITest02
                     t2.Text = "Account ID";
                     DatePicker1.SelectedDate = new DateTime(2018, 04, 23);
                     //t3.Text = "Date";
-
+                    t1.Visibility = Visibility.Visible;
+                    t2.Visibility = Visibility.Visible;
                     t3.Visibility = Visibility.Hidden;
                     t4.Visibility = Visibility.Hidden;
                     t5.Visibility = Visibility.Hidden;
@@ -99,6 +120,8 @@ namespace GUITest02
                     tb2.Text = "PL90124062921111001045475455";
                     //tb3.Text = "2018-04-23";
 
+                    tb1.Visibility = Visibility.Visible;
+                    tb2.Visibility = Visibility.Visible;
                     tb3.Visibility = Visibility.Hidden;
                     tb4.Visibility = Visibility.Hidden;
                     tb5.Visibility = Visibility.Hidden;
@@ -111,10 +134,12 @@ namespace GUITest02
                     property2.Content = "PDF";
                     PropertyList.SelectedIndex = 0;
 
+                    Toggle1.Visibility = Visibility.Visible;
                     Toggle1.Content = "Year Statement";
 
                     break;
-                case 1:
+
+                case 1: //GetAccountBalance
 
                     break;
                 case 2:
@@ -137,7 +162,7 @@ namespace GUITest02
             // Configure open file dialog box
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog
             {
-                InitialDirectory = @"C:\Users\Ania\Pobrane",
+                InitialDirectory = "C:\\Users\\Ania\\Pobrane",
                 //dlg.FileName = "Certificate"; // Default file name
                 DefaultExt = ".p12", // Default file extension
                 Filter = "Certificates (.p12)|*.p12" // Filter files by extension
@@ -181,7 +206,8 @@ namespace GUITest02
                     }
 
                     break;
-                case 1:
+
+                case 1: //GetAccountBalance
 
                     break;
                 case 2:
@@ -202,7 +228,7 @@ namespace GUITest02
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
 
-            string lvpath = @"c:\temp\MyTest.txt";
+            string lvpath = null;
 
             CommonOpenFileDialog dialog = new CommonOpenFileDialog();
             dialog.InitialDirectory = "C:\\Users";
@@ -213,7 +239,7 @@ namespace GUITest02
             }
 
             // This text is added only once to the file.
-            if (!File.Exists(lvpath))
+            if (!File.Exists(lvpath) && lvpath != null)
             {
                 // Create a file to write to.
                 File.WriteAllText(lvpath, gvresponse);
