@@ -26,9 +26,13 @@
         </StackPanel>
         <StackPanel  Grid.Column="1">
             <WrapPanel>
-                <DatePicker x:Name="DatePicker1" Height="25" HorizontalAlignment="Left" Margin="42,26,0,0" VerticalAlignment="Top" Width="115" />
-                <DatePicker x:Name="DatePicker2" Height="25" HorizontalAlignment="Left" Margin="42,26,0,0" VerticalAlignment="Top" Width="115" />
+                <DatePicker x:Name="DatePicker1" Height="25" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="115" />
+                <DatePicker x:Name="DatePicker2" Height="25" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="115" />
             </WrapPanel>
+            <ListBox x:Name="PropertyList" Visibility="Hidden" Margin="10" Width="100" HorizontalAlignment="Left">
+                <ListBoxItem x:Name="property1"/>
+                <ListBoxItem x:Name="property2"/>
+            </ListBox>
             <WrapPanel>
                 <TextBlock x:Name="t1" Text="tekst 1" Width="150" Padding="5" Margin="10"/>
                 <TextBox x:Name="tb1" Width="300" Padding="5" Margin="10"/>
@@ -49,6 +53,7 @@
                 <TextBlock x:Name="t5" Text="tekst 5" Width="150" Padding="5" Margin="10"/>
                 <TextBox x:Name="tb5" Width="300" Padding="5" Margin="10"/>
             </WrapPanel>
+            <ToggleButton x:Name="Toggle1" Click="ToggleButton_Click"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -11,7 +11,7 @@ namespace BTechCogitareBankUtils01
 {
     public class WSDLPekao01
     {
-        public static void getStatement(string cert, string MsgId, string AccId, DateTime Dt)
+        public static void getStatement(string cert, string MsgId, string AccId, bool byear, DateTime Dt, string format = "XML", string StID = " ")
         {
             peako.pekaoccs00101 loWSDL = new peako.pekaoccs00101();
             peako.MessageIdentyfication1 loMsgId;
@@ -29,13 +29,29 @@ namespace BTechCogitareBankUtils01
             loQuery.StmtCrit = new peako.StatementCriteria();
             loQuery.StmtCrit.NewCrit = new peako.NewCriteria1();
             loQuery.StmtCrit.NewCrit.SchCrit = new peako.SearchCriteria1();
-            loQuery.StmtCrit.NewCrit.SchCrit.StmtFrmt = peako.StatementFormat.XML;
+
+            if(format == "XML")
+                loQuery.StmtCrit.NewCrit.SchCrit.StmtFrmt = peako.StatementFormat.XML;
+            else
+                loQuery.StmtCrit.NewCrit.SchCrit.StmtFrmt = peako.StatementFormat.PDF;
+
             loQuery.StmtCrit.NewCrit.SchCrit.AcctId = new peako.AccountIdentification1();
             loQuery.StmtCrit.NewCrit.SchCrit.StmtValDt = new peako.StatementValueSearch();
             loQuery.StmtCrit.NewCrit.SchCrit.StmtValDt.DtSch = new peako.DatePeriodDetails2();
-            loQuery.StmtCrit.NewCrit.SchCrit.StmtValDt.DtSch.Item = Dt;
-            //loQuery.StmtCrit.NewCrit.SchCrit.StmtValDt.DtSch.Item = new DateTime(2018, 04, 23);
 
+            if (byear == false)
+                loQuery.StmtCrit.NewCrit.SchCrit.StmtValDt.DtSch.Item = Dt;
+            else
+            {
+                loQuery.StmtCrit.NewCrit.SchCrit.StmtValDt.DtSch.Item = Dt.Year.ToString();
+                loQuery.StmtCrit.NewCrit.SchCrit.StmtId = new peako.StatementId
+                {
+                    EQ = StID
+                };
+         
+            }
+
+            //loQuery.StmtCrit.NewCrit.SchCrit.StmtValDt.DtSch.Item = new DateTime(2018, 04, 23);
 
             loQuery.StmtCrit.NewCrit.SchCrit.AcctId.EQ = new peako.AccountIdentification3Choice1
             {

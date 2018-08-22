@@ -38,7 +38,23 @@ namespace GUITest02
             switch (lvMethod)
             {
                 case 0: //GetStatement
-                    WSDLPekao01.getStatement(gvfile, tb1.Text, tb2.Text, DatePicker1.SelectedDate.Value.Date);
+
+                    string lvformat;
+                    if (PropertyList.SelectedIndex == 0)
+                        lvformat = "XML";
+                    else
+                        lvformat = "PDF";
+
+                    //string lvyear;
+                    string lvStId;
+                    if(Toggle1.IsChecked == true)
+                    {
+                        //lvyear = tb3.Text;
+                        lvStId = tb3.Text;
+                        WSDLPekao01.getStatement(gvfile, tb1.Text, tb2.Text, true, DatePicker1.SelectedDate.Value.Date, lvformat, lvStId);
+                    }
+                    else
+                        WSDLPekao01.getStatement(gvfile, tb1.Text, tb2.Text, false, DatePicker1.SelectedDate.Value.Date, lvformat);
                     break;
                 case 1:
 
@@ -83,9 +99,15 @@ namespace GUITest02
                     tb4.Visibility = Visibility.Hidden;
                     tb5.Visibility = Visibility.Hidden;
 
-
                     DatePicker1.Visibility = Visibility.Visible;
                     DatePicker2.Visibility = Visibility.Hidden;
+
+                    PropertyList.Visibility = Visibility.Visible;
+                    property1.Content = "XML";
+                    property2.Content = "PDF";
+                    PropertyList.SelectedIndex = 0;
+
+                    Toggle1.Content = "Year Statement";
 
                     break;
                 case 1:
@@ -125,6 +147,51 @@ namespace GUITest02
             {
                 // Open document
                 gvfile= dlg.FileName;
+            }
+        }
+
+        private void ToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            int lvMethod = MethodList.SelectedIndex;
+
+            switch (lvMethod)
+            {
+                case 0: //GetStatement
+
+                    if (Toggle1.IsChecked == true)
+                    {
+                        System.Windows.MessageBox.Show("Choose year (day and month does not matter)");
+
+
+                        t3.Visibility = Visibility.Visible;
+                        tb3.Visibility = Visibility.Visible;
+                        t3.Text = "Statement ID";
+                        tb3.Text = "1";
+                    }
+                    else
+                    {
+                        t3.Visibility = Visibility.Hidden;
+                        tb3.Visibility = Visibility.Hidden;
+
+                        DatePicker1.Visibility = Visibility.Visible;
+                    }
+
+                    break;
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+                default:
+                    System.Windows.MessageBox.Show("invalid method chosen");
+                    break;
             }
         }
     }
