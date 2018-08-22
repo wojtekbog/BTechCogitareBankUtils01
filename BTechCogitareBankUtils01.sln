@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BTechCogitareBankUtils01", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUITest01", "GUITest01\GUITest01.csproj", "{06CDDF12-7BED-4ACA-8C47-4D0D94364C2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUITest02", "GUITest02\GUITest02.csproj", "{1E733C3D-9475-4715-B96A-8E17AD6870DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{06CDDF12-7BED-4ACA-8C47-4D0D94364C2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06CDDF12-7BED-4ACA-8C47-4D0D94364C2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06CDDF12-7BED-4ACA-8C47-4D0D94364C2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E733C3D-9475-4715-B96A-8E17AD6870DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E733C3D-9475-4715-B96A-8E17AD6870DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E733C3D-9475-4715-B96A-8E17AD6870DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E733C3D-9475-4715-B96A-8E17AD6870DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

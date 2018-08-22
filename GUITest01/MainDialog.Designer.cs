@@ -29,52 +29,48 @@ namespace GUITest01
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.certFName = new System.Windows.Forms.TextBox();
-            this.openFileCert = new System.Windows.Forms.OpenFileDialog();
-            this.F4 = new System.Windows.Forms.Button();
+            this.textXml = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(424, 253);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Location = new System.Drawing.Point(565, 311);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 28);
+            this.button1.Size = new System.Drawing.Size(129, 34);
             this.button1.TabIndex = 2;
             this.button1.Text = "GetStatements";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // certFName
+            // textXml
             // 
-            this.certFName.Location = new System.Drawing.Point(13, 13);
-            this.certFName.Name = "certFName";
-            this.certFName.Size = new System.Drawing.Size(467, 20);
-            this.certFName.TabIndex = 3;
+            this.textXml.Location = new System.Drawing.Point(17, 16);
+            this.textXml.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textXml.Multiline = true;
+            this.textXml.Name = "textXml";
+            this.textXml.Size = new System.Drawing.Size(676, 288);
+            this.textXml.TabIndex = 3;
             // 
-            // openFileCert
+            // button2
             // 
-            this.openFileCert.FileName = "c:\\Temp\\pekao.p12";
-            // 
-            // F4
-            // 
-            this.F4.Location = new System.Drawing.Point(487, 9);
-            this.F4.Name = "F4";
-            this.F4.Size = new System.Drawing.Size(34, 23);
-            this.F4.TabIndex = 4;
-            this.F4.Text = "...";
-            this.F4.UseVisualStyleBackColor = true;
-            this.F4.Click += new System.EventHandler(this.F4_Click);
+            this.button2.Location = new System.Drawing.Point(400, 311);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(133, 34);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // MainDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 292);
-            this.Controls.Add(this.F4);
-            this.Controls.Add(this.certFName);
+            this.ClientSize = new System.Drawing.Size(711, 359);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.textXml);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainDialog";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -84,9 +80,8 @@ namespace GUITest01
 
         #endregion
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox certFName;
-        private System.Windows.Forms.OpenFileDialog openFileCert;
-        private System.Windows.Forms.Button F4;
+        private System.Windows.Forms.TextBox textXml;
+        private System.Windows.Forms.Button button2;
     }
 }
 
