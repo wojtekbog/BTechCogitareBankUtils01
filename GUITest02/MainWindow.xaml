@@ -23,6 +23,8 @@
             </ListBox>
             <Button x:Name="buttonProperties" Content="Show properties" Margin="10" Padding="5" Click="buttonProperties_Click"/>
             <Button x:Name="buttonGo" Content="Go" Margin="10" Padding="5" Click="buttonGo_Click"/>
+            <TextBox x:Name="fileName" Margin="10" Padding="5" Text="filename"/>
+            <Button x:Name="buttonSave" Content="Save response" Margin="10" Padding="5" Click="buttonSave_Click"/>
         </StackPanel>
         <StackPanel  Grid.Column="1">
             <WrapPanel>

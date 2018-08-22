@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BTechCogitareBankUtils01;
+using Microsoft.WindowsAPICodePack.Dialogs;
+
 
 namespace GUITest02
 {
@@ -30,6 +33,7 @@ namespace GUITest02
         }
 
         string gvfile;
+        string gvresponse;
 
         private void buttonGo_Click(object sender, RoutedEventArgs e)
         {
@@ -51,10 +55,10 @@ namespace GUITest02
                     {
                         //lvyear = tb3.Text;
                         lvStId = tb3.Text;
-                        WSDLPekao01.getStatement(gvfile, tb1.Text, tb2.Text, true, DatePicker1.SelectedDate.Value.Date, lvformat, lvStId);
+                        gvresponse = WSDLPekao01.getStatement(gvfile, tb1.Text, tb2.Text, true, DatePicker1.SelectedDate.Value.Date, lvformat, lvStId);
                     }
                     else
-                        WSDLPekao01.getStatement(gvfile, tb1.Text, tb2.Text, false, DatePicker1.SelectedDate.Value.Date, lvformat);
+                        gvresponse = WSDLPekao01.getStatement(gvfile, tb1.Text, tb2.Text, false, DatePicker1.SelectedDate.Value.Date, lvformat);
                     break;
                 case 1:
 
@@ -193,6 +197,28 @@ namespace GUITest02
                     System.Windows.MessageBox.Show("invalid method chosen");
                     break;
             }
+        }
+
+        private void buttonSave_Click(object sender, RoutedEventArgs e)
+        {
+
+            string lvpath = @"c:\temp\MyTest.txt";
+
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.InitialDirectory = "C:\\Users";
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                lvpath = string.Concat(dialog.FileName, "\\", fileName.Text, ".xml");
+            }
+
+            // This text is added only once to the file.
+            if (!File.Exists(lvpath))
+            {
+                // Create a file to write to.
+                File.WriteAllText(lvpath, gvresponse);
+            }
+
         }
     }
 }

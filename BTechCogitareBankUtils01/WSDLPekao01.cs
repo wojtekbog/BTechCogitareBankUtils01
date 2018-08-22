@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography.X509Certificates;
 using peako = BTechCogitareBankUtils01.pl.pekaobiznes24.www;
+using System.Xml.Serialization;
 
 namespace BTechCogitareBankUtils01
 {
     public class WSDLPekao01
     {
-        public static void getStatement(string cert, string MsgId, string AccId, bool byear, DateTime Dt, string format = "XML", string StID = " ")
+        public static string getStatement(string cert, string MsgId, string AccId, bool byear, DateTime Dt, string format = "XML", string StID = " ")
         {
             peako.pekaoccs00101 loWSDL = new peako.pekaoccs00101();
             peako.MessageIdentyfication1 loMsgId;
@@ -72,14 +73,21 @@ namespace BTechCogitareBankUtils01
             {
                 loWSDL.ClientCertificates.Add(new X509Certificate2(@cert));
                 loResponse = loWSDL.GetStatement(loRequest);
-                MessageBox.Show(loResponse.ToString());
+                //MessageBox.Show(loResponse.ToString());
 
-                MessageBox.Show(loResponse.Item.ToString());
+                //convert response to string
+                var stringwriter = new System.IO.StringWriter();
+                var serializer = new XmlSerializer(loResponse.Item.GetType());
+                serializer.Serialize(stringwriter, loResponse.Item);
+                string text = stringwriter.ToString();
+                MessageBox.Show(text);
+                return text;
             }
             catch (Exception loError)
             {
                 MessageBox.Show(loError.ToString());
             }
+            return "Error";
         }
     }
 }
