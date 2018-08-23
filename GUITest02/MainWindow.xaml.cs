@@ -82,6 +82,8 @@ namespace GUITest02
 
                 case 1: //GetAccountBalance
 
+                    gvresponse = WSDLPekao01.getAccountBalance(gvfile, "sasa");
+
                     break;
                 case 2:
 

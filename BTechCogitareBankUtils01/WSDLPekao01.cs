@@ -12,8 +12,17 @@ namespace BTechCogitareBankUtils01
 {
     public class WSDLPekao01
     {
-        public static string getStatement(string cert, string MsgId, string AccId, bool byear, DateTime Dt, string format = "XML", string StID = " ")
+        public static string getStatement(string cert, string MsgId, string AccId, bool byear, DateTime Dt, string format = "XML", string StId = " ")
         {
+            /* cert - path to certificate file *.p12
+             * MsgId - Message Id
+             * AccId - Account Id
+             * byear - true (method takes year and Statement Id) / false (method takes only date to statement request)
+             * Dt - date
+             * format - format of response (XML / PDF)
+             * StId - Statement Id
+             */
+
             peako.pekaoccs00101 loWSDL = new peako.pekaoccs00101();
             peako.MessageIdentyfication1 loMsgId;
             peako.StatementQueryDefinition loQuery;
@@ -47,7 +56,7 @@ namespace BTechCogitareBankUtils01
                 loQuery.StmtCrit.NewCrit.SchCrit.StmtValDt.DtSch.Item = Dt.Year.ToString();
                 loQuery.StmtCrit.NewCrit.SchCrit.StmtId = new peako.StatementId
                 {
-                    EQ = StID
+                    EQ = StId
                 };
          
             }
@@ -65,23 +74,25 @@ namespace BTechCogitareBankUtils01
             loStatement.MsgId = loMsgId;
             loStatement.StmtQryDef = loQuery;
 
-            loRequest = new peako.StatementRequest();
-            loRequest.Document = new peako.Document2();
+            loRequest = new peako.StatementRequest
+            {
+                Document = new peako.Document2()
+            };
+
             loRequest.Document.GetStmt = loStatement;
 
             try
             {
                 loWSDL.ClientCertificates.Add(new X509Certificate2(@cert));
                 loResponse = loWSDL.GetStatement(loRequest);
-                //MessageBox.Show(loResponse.ToString());
 
                 //convert response to string
                 var stringwriter = new System.IO.StringWriter();
                 var serializer = new XmlSerializer(loResponse.Item.GetType());
                 serializer.Serialize(stringwriter, loResponse.Item);
-                string text = stringwriter.ToString();
-                MessageBox.Show(text);
-                return text;
+                string lvtext = stringwriter.ToString();
+                MessageBox.Show(lvtext);
+                return lvtext;
             }
             catch (Exception loError)
             {
@@ -92,23 +103,83 @@ namespace BTechCogitareBankUtils01
 
         public static string getAccountBalance(string cert, string MsgId)
         {
+            /* cert - path to certificate file *.p12
+             * MsgId - Message Id
+             */
+
             peako.pekaoccs00101 loWSDL = new peako.pekaoccs00101();
             peako.MessageIdentyfication1 loMsgId;
             peako.AccountQueryDefinition4 loQuery;
             peako.GetAccountBalanceRequest loBalance;
+            peako.GetAccountBalanceResponse loResponse;
 
-            peako.StatementRequest loRequest;
-            peako.StatementResponse loResponse;
-
+            //--- Message Id
             loMsgId = new peako.MessageIdentyfication1();
-            loMsgId.Id = MsgId;
+            loMsgId.Id = "GAB20140206001";
+            //loMsgId.Id = MsgId;
 
+            //--- Account Query Definition
             loQuery = new peako.AccountQueryDefinition4();
             loQuery.AcctCrit = new peako.AccountCriteriaDefinition4Choice();
-            //loQuery.AcctCrit.
 
+            peako.AccountCriteria4 loCriteria = new peako.AccountCriteria4();
+            loCriteria.SchCrit = new peako.CashAccountSearchCriteria4[1];
+            loCriteria.SchCrit[0] = new peako.CashAccountSearchCriteria4();
 
+            //--- Account Id
+            loCriteria.SchCrit[0].AcctId = new peako.AccountIdentificationSearchCriteriaChoice[2];
 
+            peako.AccountIdentification1Choice loAccId1 = new peako.AccountIdentification1Choice();
+            loAccId1.Item = "94124062921111001080877861"; //////
+            loAccId1.ItemElementName = peako.ItemChoiceType56.BBAN;
+
+            loCriteria.SchCrit[0].AcctId[0] = new peako.AccountIdentificationSearchCriteriaChoice();
+            loCriteria.SchCrit[0].AcctId[0].Item = loAccId1;
+            loCriteria.SchCrit[0].AcctId[0].ItemElementName = peako.ItemChoiceType57.EQ;
+
+            peako.AccountIdentification1Choice loAccId2 = new peako.AccountIdentification1Choice();
+            loAccId2.Item = "PL79124062921111001045475556"; //////
+            loAccId2.ItemElementName = peako.ItemChoiceType56.IBAN;
+
+            loCriteria.SchCrit[0].AcctId[1] = new peako.AccountIdentificationSearchCriteriaChoice();
+            loCriteria.SchCrit[0].AcctId[1].Item = loAccId2;
+            loCriteria.SchCrit[0].AcctId[1].ItemElementName = peako.ItemChoiceType57.EQ;
+
+            //--- Bal
+            loCriteria.SchCrit[0].Bal = new peako.BalanceDetails4[1];
+            loCriteria.SchCrit[0].Bal[0] = new peako.BalanceDetails4();
+            loCriteria.SchCrit[0].Bal[0].BalTp = new peako.BalanceType3Choice[2];
+            loCriteria.SchCrit[0].Bal[0].BalTp[0] = new peako.BalanceType3Choice();
+            loCriteria.SchCrit[0].Bal[0].BalTp[0].Item = peako.BalanceType10Code.AVLB; ///////
+            loCriteria.SchCrit[0].Bal[0].BalTp[1] = new peako.BalanceType3Choice();
+            loCriteria.SchCrit[0].Bal[0].BalTp[1].Item = peako.BalanceType10Code.BOOK; ///////
+            loCriteria.SchCrit[0].Bal[0].CtrPtyTp = peako.BalanceCounterparty1Code.MULT; //////
+
+            loQuery.AcctCrit.Item = loCriteria;
+
+            loBalance = new peako.GetAccountBalanceRequest();
+            loBalance.Document = new peako.Document12();
+            loBalance.Document.GetAcct = new peako.GetAccountV04();
+            loBalance.Document.GetAcct.AcctQryDef = loQuery;
+
+            try
+            {
+                loWSDL.ClientCertificates.Add(new X509Certificate2(@cert));
+                loResponse = loWSDL.GetAccountBalance(loBalance);
+                //loResponse = loWSDL.GetStatement(loRequest);
+
+                //convert response to string
+                var stringwriter = new System.IO.StringWriter();
+                var serializer = new XmlSerializer(loResponse.GetType());
+                serializer.Serialize(stringwriter, loResponse);
+                string lvtext = stringwriter.ToString();
+                MessageBox.Show(lvtext);
+                return lvtext;
+            }
+            catch (Exception loError)
+            {
+                MessageBox.Show(loError.ToString());
+            }
             return "Error";
         }
     }

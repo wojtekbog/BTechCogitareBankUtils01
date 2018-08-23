@@ -8,13 +8,13 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="170"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0">
             <Button x:Name="buttonCertificate" Content="Certificate" Margin="10" Padding="5" Click="buttonCertificate_Click"/>
             <TextBlock Text="Choose method:" Margin="10,0,0,0"/>
-            <ListBox x:Name="MethodList" Padding="5" Margin="10">
+            <ListBox x:Name="MethodList" Padding="5" Margin="10" Height="130">
                 <ListBoxItem Content="GetStatement"/>
                 <ListBoxItem Content="GetAccountBalance"/>
                 <ListBoxItem Content="item3"/>
