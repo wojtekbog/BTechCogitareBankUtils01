@@ -164,6 +164,8 @@ namespace BTechCogitareBankUtils01
             loBalance.Document = new peako.Document12();
             loBalance.Document.GetAcct = new peako.GetAccountV04();
             loBalance.Document.GetAcct.AcctQryDef = loQuery;
+            loBalance.Document.GetAcct.MsgId = new peako.MessageIdentification1();
+            loBalance.Document.GetAcct.MsgId.Id = MsgId;
 
             try
             {
