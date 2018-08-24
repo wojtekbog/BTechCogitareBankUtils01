@@ -37,23 +37,23 @@
                 <ListBoxItem x:Name="property2"/>
             </ListBox>
             <WrapPanel>
-                <TextBlock x:Name="t1" Text="tekst 1" Width="150" Padding="5" Margin="10"/>
+                <TextBlock x:Name="t1" Text="tekst 1" Width="200" Padding="5" Margin="10"/>
                 <TextBox x:Name="tb1" Width="300" Padding="5" Margin="10"/>
             </WrapPanel>
             <WrapPanel>
-                <TextBlock x:Name="t2" Text="tekst 2" Width="150" Padding="5" Margin="10"/>
+                <TextBlock x:Name="t2" Text="tekst 2" Width="200" Padding="5" Margin="10"/>
                 <TextBox x:Name="tb2" Width="300" Padding="5" Margin="10"/>
             </WrapPanel>
             <WrapPanel>
-                <TextBlock x:Name="t3" Text="tekst 3" Width="150" Padding="5" Margin="10"/>
+                <TextBlock x:Name="t3" Text="tekst 3" Width="200" Padding="5" Margin="10"/>
                 <TextBox x:Name="tb3" Width="300" Padding="5" Margin="10"/>
             </WrapPanel>
             <WrapPanel>
-                <TextBlock x:Name="t4" Text="tekst 4" Width="150" Padding="5" Margin="10"/>
+                <TextBlock x:Name="t4" Text="tekst 4" Width="200" Padding="5" Margin="10"/>
                 <TextBox x:Name="tb4" Width="300" Padding="5" Margin="10"/>
             </WrapPanel>
             <WrapPanel>
-                <TextBlock x:Name="t5" Text="tekst 5" Width="150" Padding="5" Margin="10"/>
+                <TextBlock x:Name="t5" Text="tekst 5" Width="200" Padding="5" Margin="10"/>
                 <TextBox x:Name="tb5" Width="300" Padding="5" Margin="10"/>
             </WrapPanel>
         </StackPanel>

@@ -101,7 +101,7 @@ namespace BTechCogitareBankUtils01
             return "Error";
         }
 
-        public static string getAccountBalance(string cert, string MsgId)
+        public static string getAccountBalance(string cert, string MsgId, string BBAN, string IBAN)
         {
             /* cert - path to certificate file *.p12
              * MsgId - Message Id
@@ -115,8 +115,8 @@ namespace BTechCogitareBankUtils01
 
             //--- Message Id
             loMsgId = new peako.MessageIdentyfication1();
-            loMsgId.Id = "GAB20140206001";
-            //loMsgId.Id = MsgId;
+            //loMsgId.Id = "GAB20140206001";
+            loMsgId.Id = MsgId;
 
             //--- Account Query Definition
             loQuery = new peako.AccountQueryDefinition4();
@@ -130,7 +130,9 @@ namespace BTechCogitareBankUtils01
             loCriteria.SchCrit[0].AcctId = new peako.AccountIdentificationSearchCriteriaChoice[2];
 
             peako.AccountIdentification1Choice loAccId1 = new peako.AccountIdentification1Choice();
-            loAccId1.Item = "94124062921111001080877861"; //////
+            //loAccId1.Item = "94124062921111001080877861"; //////            
+            loAccId1.Item = BBAN; //////
+
             loAccId1.ItemElementName = peako.ItemChoiceType56.BBAN;
 
             loCriteria.SchCrit[0].AcctId[0] = new peako.AccountIdentificationSearchCriteriaChoice();
@@ -138,7 +140,8 @@ namespace BTechCogitareBankUtils01
             loCriteria.SchCrit[0].AcctId[0].ItemElementName = peako.ItemChoiceType57.EQ;
 
             peako.AccountIdentification1Choice loAccId2 = new peako.AccountIdentification1Choice();
-            loAccId2.Item = "PL79124062921111001045475556"; //////
+            //loAccId2.Item = "PL79124062921111001045475556"; //////
+            loAccId2.Item = IBAN;
             loAccId2.ItemElementName = peako.ItemChoiceType56.IBAN;
 
             loCriteria.SchCrit[0].AcctId[1] = new peako.AccountIdentificationSearchCriteriaChoice();

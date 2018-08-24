@@ -82,7 +82,7 @@ namespace GUITest02
 
                 case 1: //GetAccountBalance
 
-                    gvresponse = WSDLPekao01.getAccountBalance(gvfile, "sasa");
+                    gvresponse = WSDLPekao01.getAccountBalance(gvfile, tb1.Text, tb2.Text, tb3.Text);
 
                     break;
                 case 2:
@@ -142,6 +142,31 @@ namespace GUITest02
                     break;
 
                 case 1: //GetAccountBalance
+
+                    t1.Text = "Message ID";
+                    t2.Text = "Basic Bank Account Number";
+                    t3.Text = "International Bank Account Number";
+
+                    t1.Visibility = Visibility.Visible;
+                    t2.Visibility = Visibility.Visible;
+                    t3.Visibility = Visibility.Visible;
+                    t4.Visibility = Visibility.Hidden;
+                    t5.Visibility = Visibility.Hidden;
+
+                    tb1.Text = "GS201109050031111111";
+                    tb2.Text = "94124062921111001080877861";
+                    tb3.Text = "PL79124062921111001045475556";
+
+                    tb1.Visibility = Visibility.Visible;
+                    tb2.Visibility = Visibility.Visible;
+                    tb3.Visibility = Visibility.Visible;
+                    tb4.Visibility = Visibility.Hidden;
+                    tb5.Visibility = Visibility.Hidden;
+
+                    DatePicker1.Visibility = Visibility.Hidden;
+                    DatePicker2.Visibility = Visibility.Hidden;
+                    PropertyList.Visibility = Visibility.Hidden;
+                    Toggle1.Visibility = Visibility.Hidden;
 
                     break;
                 case 2:
