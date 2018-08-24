@@ -91,6 +91,9 @@ namespace BTechCogitareBankUtils01
                 var serializer = new XmlSerializer(loResponse.Item.GetType());
                 serializer.Serialize(stringwriter, loResponse.Item);
                 string lvtext = stringwriter.ToString();
+
+                lvtext = lvtext.Replace(" xmlns=\"urn:iso:std:iso:20022:tech:xsd:camt.053.001.02\"", "");
+
                 MessageBox.Show(lvtext);
                 return lvtext;
             }
@@ -105,6 +108,8 @@ namespace BTechCogitareBankUtils01
         {
             /* cert - path to certificate file *.p12
              * MsgId - Message Id
+             * BBAN - Basic Bank Account Number
+             * IBAN - International Bank Account Number
              */
 
             peako.pekaoccs00101 loWSDL = new peako.pekaoccs00101();
@@ -115,7 +120,6 @@ namespace BTechCogitareBankUtils01
 
             //--- Message Id
             loMsgId = new peako.MessageIdentyfication1();
-            //loMsgId.Id = "GAB20140206001";
             loMsgId.Id = MsgId;
 
             //--- Account Query Definition
@@ -130,7 +134,6 @@ namespace BTechCogitareBankUtils01
             loCriteria.SchCrit[0].AcctId = new peako.AccountIdentificationSearchCriteriaChoice[2];
 
             peako.AccountIdentification1Choice loAccId1 = new peako.AccountIdentification1Choice();
-            //loAccId1.Item = "94124062921111001080877861"; //////            
             loAccId1.Item = BBAN; //////
 
             loAccId1.ItemElementName = peako.ItemChoiceType56.BBAN;
@@ -140,7 +143,6 @@ namespace BTechCogitareBankUtils01
             loCriteria.SchCrit[0].AcctId[0].ItemElementName = peako.ItemChoiceType57.EQ;
 
             peako.AccountIdentification1Choice loAccId2 = new peako.AccountIdentification1Choice();
-            //loAccId2.Item = "PL79124062921111001045475556"; //////
             loAccId2.Item = IBAN;
             loAccId2.ItemElementName = peako.ItemChoiceType56.IBAN;
 
@@ -171,13 +173,15 @@ namespace BTechCogitareBankUtils01
             {
                 loWSDL.ClientCertificates.Add(new X509Certificate2(@cert));
                 loResponse = loWSDL.GetAccountBalance(loBalance);
-                //loResponse = loWSDL.GetStatement(loRequest);
 
                 //convert response to string
                 var stringwriter = new System.IO.StringWriter();
                 var serializer = new XmlSerializer(loResponse.GetType());
                 serializer.Serialize(stringwriter, loResponse);
                 string lvtext = stringwriter.ToString();
+
+                lvtext = lvtext.Replace(" xmlns=\"urn:swift:xsd:camt.004.001.04\"", "");
+
                 MessageBox.Show(lvtext);
                 return lvtext;
             }
