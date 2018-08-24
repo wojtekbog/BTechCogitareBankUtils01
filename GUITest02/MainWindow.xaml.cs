@@ -48,7 +48,7 @@ namespace GUITest02
             tb4.Visibility = Visibility.Hidden;
             tb5.Visibility = Visibility.Hidden;
 
-
+            buttonSave.IsEnabled = false;
         }
 
         string gvfile;
@@ -98,6 +98,7 @@ namespace GUITest02
                     System.Windows.MessageBox.Show("invalid method chosen");
                     break;
             }
+            buttonSave.IsEnabled = true;
         }
 
         private void buttonProperties_Click(object sender, RoutedEventArgs e)
@@ -111,7 +112,7 @@ namespace GUITest02
                     t1.Text = "Message ID";
                     t2.Text = "Account ID";
                     DatePicker1.SelectedDate = new DateTime(2018, 04, 23);
-                    //t3.Text = "Date";
+
                     t1.Visibility = Visibility.Visible;
                     t2.Visibility = Visibility.Visible;
                     t3.Visibility = Visibility.Hidden;
@@ -120,7 +121,6 @@ namespace GUITest02
 
                     tb1.Text = "GS201109050031111111";
                     tb2.Text = "PL90124062921111001045475455";
-                    //tb3.Text = "2018-04-23";
 
                     tb1.Visibility = Visibility.Visible;
                     tb2.Visibility = Visibility.Visible;
@@ -190,7 +190,6 @@ namespace GUITest02
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog
             {
                 InitialDirectory = "C:\\Users\\Ania\\Pobrane",
-                //dlg.FileName = "Certificate"; // Default file name
                 DefaultExt = ".p12", // Default file extension
                 Filter = "Certificates (.p12)|*.p12" // Filter files by extension
             };
@@ -217,7 +216,6 @@ namespace GUITest02
                     if (Toggle1.IsChecked == true)
                     {
                         System.Windows.MessageBox.Show("Choose year (day and month does not matter)");
-
 
                         t3.Visibility = Visibility.Visible;
                         tb3.Visibility = Visibility.Visible;
@@ -246,6 +244,7 @@ namespace GUITest02
                 case 4:
 
                     break;
+
                 default:
                     System.Windows.MessageBox.Show("invalid method chosen");
                     break;
@@ -254,7 +253,6 @@ namespace GUITest02
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
-
             string lvpath = null;
 
             CommonOpenFileDialog dialog = new CommonOpenFileDialog();
@@ -265,13 +263,10 @@ namespace GUITest02
                 lvpath = string.Concat(dialog.FileName, "\\", fileName.Text, ".xml");
             }
 
-            // This text is added only once to the file.
             if (!File.Exists(lvpath) && lvpath != null)
             {
-                // Create a file to write to.
                 File.WriteAllText(lvpath, gvresponse);
             }
-
         }
     }
 }

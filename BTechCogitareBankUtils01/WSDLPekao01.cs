@@ -29,17 +29,17 @@ namespace BTechCogitareBankUtils01
             peako.GetStatement loStatement;
             peako.StatementRequest loRequest;
             peako.StatementResponse loResponse;
-            //          String lvXml = textXml.Text;
 
+            // Message Id
             loMsgId = new peako.MessageIdentyfication1();
             loMsgId.Id = MsgId;
-            //loMsgId.Id = "GS201109050031111111";
 
             loQuery = new peako.StatementQueryDefinition();
             loQuery.StmtCrit = new peako.StatementCriteria();
             loQuery.StmtCrit.NewCrit = new peako.NewCriteria1();
             loQuery.StmtCrit.NewCrit.SchCrit = new peako.SearchCriteria1();
 
+            // Format
             if(format == "XML")
                 loQuery.StmtCrit.NewCrit.SchCrit.StmtFrmt = peako.StatementFormat.XML;
             else
@@ -49,6 +49,7 @@ namespace BTechCogitareBankUtils01
             loQuery.StmtCrit.NewCrit.SchCrit.StmtValDt = new peako.StatementValueSearch();
             loQuery.StmtCrit.NewCrit.SchCrit.StmtValDt.DtSch = new peako.DatePeriodDetails2();
 
+            // Statement by date / year + Statement Id
             if (byear == false)
                 loQuery.StmtCrit.NewCrit.SchCrit.StmtValDt.DtSch.Item = Dt;
             else
@@ -58,16 +59,12 @@ namespace BTechCogitareBankUtils01
                 {
                     EQ = StId
                 };
-         
             }
-
-            //loQuery.StmtCrit.NewCrit.SchCrit.StmtValDt.DtSch.Item = new DateTime(2018, 04, 23);
 
             loQuery.StmtCrit.NewCrit.SchCrit.AcctId.EQ = new peako.AccountIdentification3Choice1
             {
                 ItemElementName = peako.ItemChoiceType14.IBAN,
                 Item = AccId
-                //Item = "PL90124062921111001045475455"
             };
 
             loStatement = new peako.GetStatement();
