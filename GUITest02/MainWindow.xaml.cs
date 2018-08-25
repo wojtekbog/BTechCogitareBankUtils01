@@ -170,14 +170,17 @@ namespace GUITest02
 
                     break;
                 case 2:
-
                     break;
+
                 case 3:
-
                     break;
+
                 case 4:
-
                     break;
+
+                case -1:
+                    break;
+
                 default:
                     System.Windows.MessageBox.Show("invalid method chosen");
                     break;
