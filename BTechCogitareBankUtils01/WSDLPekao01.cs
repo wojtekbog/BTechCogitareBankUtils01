@@ -30,7 +30,7 @@ namespace BTechCogitareBankUtils01
             peako.StatementRequest loRequest;
             peako.StatementResponse loResponse;
 
-            // Message Id
+            //--- Message Id
             loMsgId = new peako.MessageIdentyfication1();
             loMsgId.Id = MsgId;
 
@@ -39,7 +39,7 @@ namespace BTechCogitareBankUtils01
             loQuery.StmtCrit.NewCrit = new peako.NewCriteria1();
             loQuery.StmtCrit.NewCrit.SchCrit = new peako.SearchCriteria1();
 
-            // Format
+            //--- Format
             if(format == "XML")
                 loQuery.StmtCrit.NewCrit.SchCrit.StmtFrmt = peako.StatementFormat.XML;
             else
@@ -49,7 +49,7 @@ namespace BTechCogitareBankUtils01
             loQuery.StmtCrit.NewCrit.SchCrit.StmtValDt = new peako.StatementValueSearch();
             loQuery.StmtCrit.NewCrit.SchCrit.StmtValDt.DtSch = new peako.DatePeriodDetails2();
 
-            // Statement by date / year + Statement Id
+            //--- Statement by date / year + Statement Id
             if (byear == false)
                 loQuery.StmtCrit.NewCrit.SchCrit.StmtValDt.DtSch.Item = Dt;
             else

@@ -26,36 +26,42 @@
             <TextBox x:Name="fileName" Margin="10" Padding="5" Text="filename"/>
             <Button x:Name="buttonSave" Content="Save response" Margin="10" Padding="5" Click="buttonSave_Click"/>
         </StackPanel>
-        <StackPanel  Grid.Column="1">
-            <WrapPanel>
-                <DatePicker x:Name="DatePicker1" Height="25" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="115" />
-                <DatePicker x:Name="DatePicker2" Height="25" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="115" />
-            </WrapPanel>
-            <ToggleButton x:Name="Toggle1" Click="ToggleButton_Click"/>
-            <ListBox x:Name="PropertyList" Visibility="Hidden" Margin="10" Width="100" HorizontalAlignment="Left">
-                <ListBoxItem x:Name="property1"/>
-                <ListBoxItem x:Name="property2"/>
+        <StackPanel x:Name="GetStPanel" Grid.Column="1" Margin="10" Visibility="Collapsed">
+            <DatePicker x:Name="GetStDatePicker" Height="25" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="115" />
+            <ListBox x:Name="GetStPropertyList" Margin="10" Width="100" HorizontalAlignment="Left">
+                <ListBoxItem x:Name="GetStProperty1" Content="XML"/>
+                <ListBoxItem x:Name="GetStProperty2" Content="PDF"/>
             </ListBox>
             <WrapPanel>
-                <TextBlock x:Name="t1" Text="tekst 1" Width="200" Padding="5" Margin="10"/>
-                <TextBox x:Name="tb1" Width="300" Padding="5" Margin="10"/>
+                <TextBlock x:Name="GetStTMsgId" Width="80" Text="Message Id" Padding="5" Margin="10"/>
+                <TextBox x:Name="GetStTbMsgId" Width="300" Padding="5" Margin="10"/>
             </WrapPanel>
             <WrapPanel>
-                <TextBlock x:Name="t2" Text="tekst 2" Width="200" Padding="5" Margin="10"/>
-                <TextBox x:Name="tb2" Width="300" Padding="5" Margin="10"/>
+                <TextBlock x:Name="GetStTAccId" Width="80" Text="Account Id" Padding="5" Margin="10"/>
+                <TextBox x:Name="GetSTTbAccId" Width="300" Padding="5" Margin="10"/>
+            </WrapPanel>
+            <ToggleButton x:Name="GetStToggle" Margin="10" Padding="5" Content="Year Statement" Click="GetStToggle_Click"/>
+            <WrapPanel x:Name="GetStatementYearStPanel" Visibility="Collapsed">
+                <TextBlock x:Name="GetStTStId" Width="80" Text="Statement Id" Padding="5" Margin="10"/>
+                <TextBox x:Name="GetStTbStId" Width="300" Padding="5" Margin="10"/>
+            </WrapPanel>
+        </StackPanel>
+        <StackPanel x:Name="GetAccBalPanel" Grid.Column="1" Margin="10" Visibility="Collapsed">
+            <WrapPanel>
+                <TextBlock x:Name="GetAccBalTMsgId" Width="200" Text="Message Id" Padding="5" Margin="10"/>
+                <TextBox x:Name="GetAccBalTbMsgId" Width="300" Padding="5" Margin="10"/>
             </WrapPanel>
             <WrapPanel>
-                <TextBlock x:Name="t3" Text="tekst 3" Width="200" Padding="5" Margin="10"/>
-                <TextBox x:Name="tb3" Width="300" Padding="5" Margin="10"/>
+                <TextBlock x:Name="GetAccBalTBBAN" Width="200" Text="Basic Bank Account Number" Padding="5" Margin="10"/>
+                <TextBox x:Name="GetAccBalTbBBAN" Width="300" Padding="5" Margin="10"/>
             </WrapPanel>
             <WrapPanel>
-                <TextBlock x:Name="t4" Text="tekst 4" Width="200" Padding="5" Margin="10"/>
-                <TextBox x:Name="tb4" Width="300" Padding="5" Margin="10"/>
+                <TextBlock x:Name="GetAccBalTIBAN" Width="200" Text="International Bank Account Number" Padding="5" Margin="10"/>
+                <TextBox x:Name="GetAccBalTbIBAN" Width="300" Padding="5" Margin="10"/>
             </WrapPanel>
-            <WrapPanel>
-                <TextBlock x:Name="t5" Text="tekst 5" Width="200" Padding="5" Margin="10"/>
-                <TextBox x:Name="tb5" Width="300" Padding="5" Margin="10"/>
-            </WrapPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Margin="10" Visibility="Collapsed">
+
         </StackPanel>
     </Grid>
 </Window>

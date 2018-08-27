@@ -30,24 +30,6 @@ namespace GUITest02
         public MainWindow()
         {
             InitializeComponent();
-
-            DatePicker1.Visibility = Visibility.Hidden;
-            DatePicker2.Visibility = Visibility.Hidden;
-
-            Toggle1.Visibility = Visibility.Hidden;
-
-            t1.Visibility = Visibility.Hidden;
-            t2.Visibility = Visibility.Hidden;
-            t3.Visibility = Visibility.Hidden;
-            t4.Visibility = Visibility.Hidden;
-            t5.Visibility = Visibility.Hidden;
-
-            tb1.Visibility = Visibility.Hidden;
-            tb2.Visibility = Visibility.Hidden;
-            tb3.Visibility = Visibility.Hidden;
-            tb4.Visibility = Visibility.Hidden;
-            tb5.Visibility = Visibility.Hidden;
-
             buttonSave.IsEnabled = false;
         }
 
@@ -63,26 +45,25 @@ namespace GUITest02
                 case 0: //GetStatement
 
                     string lvformat;
-                    if (PropertyList.SelectedIndex == 0)
+                    if (GetStPropertyList.SelectedIndex == 0)
                         lvformat = "XML";
                     else
                         lvformat = "PDF";
 
                     //string lvyear;
                     string lvStId;
-                    if(Toggle1.IsChecked == true)
+                    if(GetStToggle.IsChecked == true)
                     {
-                        //lvyear = tb3.Text;
-                        lvStId = tb3.Text;
-                        gvresponse = WSDLPekao01.getStatement(gvfile, tb1.Text, tb2.Text, true, DatePicker1.SelectedDate.Value.Date, lvformat, lvStId);
+                        lvStId = GetStTbStId.Text;
+                        gvresponse = WSDLPekao01.getStatement(gvfile, GetStTbMsgId.Text, GetSTTbAccId.Text, true, GetStDatePicker.SelectedDate.Value.Date, lvformat, lvStId);
                     }
                     else
-                        gvresponse = WSDLPekao01.getStatement(gvfile, tb1.Text, tb2.Text, false, DatePicker1.SelectedDate.Value.Date, lvformat);
+                        gvresponse = WSDLPekao01.getStatement(gvfile, GetStTbMsgId.Text, GetSTTbAccId.Text, false, GetStDatePicker.SelectedDate.Value.Date, lvformat);
                     break;
 
                 case 1: //GetAccountBalance
 
-                    gvresponse = WSDLPekao01.getAccountBalance(gvfile, tb1.Text, tb2.Text, tb3.Text);
+                    gvresponse = WSDLPekao01.getAccountBalance(gvfile, GetAccBalTbMsgId.Text, GetAccBalTbBBAN.Text, GetAccBalTbIBAN.Text);
 
                     break;
                 case 2:
@@ -109,64 +90,25 @@ namespace GUITest02
             {
                 case 0: //GetStatement
 
-                    t1.Text = "Message ID";
-                    t2.Text = "Account ID";
-                    DatePicker1.SelectedDate = new DateTime(2018, 04, 23);
+                    GetStPanel.Visibility = Visibility.Visible;
+                    GetAccBalPanel.Visibility = Visibility.Collapsed;
 
-                    t1.Visibility = Visibility.Visible;
-                    t2.Visibility = Visibility.Visible;
-                    t3.Visibility = Visibility.Hidden;
-                    t4.Visibility = Visibility.Hidden;
-                    t5.Visibility = Visibility.Hidden;
+                    GetStDatePicker.SelectedDate = new DateTime(2018, 04, 23);
+                    GetStTbMsgId.Text = "GS201109050031111111";
+                    GetSTTbAccId.Text = "PL90124062921111001045475455";
 
-                    tb1.Text = "GS201109050031111111";
-                    tb2.Text = "PL90124062921111001045475455";
-
-                    tb1.Visibility = Visibility.Visible;
-                    tb2.Visibility = Visibility.Visible;
-                    tb3.Visibility = Visibility.Hidden;
-                    tb4.Visibility = Visibility.Hidden;
-                    tb5.Visibility = Visibility.Hidden;
-
-                    DatePicker1.Visibility = Visibility.Visible;
-                    DatePicker2.Visibility = Visibility.Hidden;
-
-                    PropertyList.Visibility = Visibility.Visible;
-                    property1.Content = "XML";
-                    property2.Content = "PDF";
-                    PropertyList.SelectedIndex = 0;
-
-                    Toggle1.Visibility = Visibility.Visible;
-                    Toggle1.Content = "Year Statement";
+                    GetStPropertyList.SelectedIndex = 0;
 
                     break;
 
                 case 1: //GetAccountBalance
 
-                    t1.Text = "Message ID";
-                    t2.Text = "Basic Bank Account Number";
-                    t3.Text = "International Bank Account Number";
+                    GetStPanel.Visibility = Visibility.Collapsed;
+                    GetAccBalPanel.Visibility = Visibility.Visible;
 
-                    t1.Visibility = Visibility.Visible;
-                    t2.Visibility = Visibility.Visible;
-                    t3.Visibility = Visibility.Visible;
-                    t4.Visibility = Visibility.Hidden;
-                    t5.Visibility = Visibility.Hidden;
-
-                    tb1.Text = "GS201109050031111111";
-                    tb2.Text = "94124062921111001080877861";
-                    tb3.Text = "PL79124062921111001045475556";
-
-                    tb1.Visibility = Visibility.Visible;
-                    tb2.Visibility = Visibility.Visible;
-                    tb3.Visibility = Visibility.Visible;
-                    tb4.Visibility = Visibility.Hidden;
-                    tb5.Visibility = Visibility.Hidden;
-
-                    DatePicker1.Visibility = Visibility.Hidden;
-                    DatePicker2.Visibility = Visibility.Hidden;
-                    PropertyList.Visibility = Visibility.Hidden;
-                    Toggle1.Visibility = Visibility.Hidden;
+                    GetAccBalTbMsgId.Text = "GS201109050031111111";
+                    GetAccBalTbBBAN.Text = "94124062921111001080877861";
+                    GetAccBalTbIBAN.Text = "PL79124062921111001045475556";
 
                     break;
                 case 2:
@@ -208,52 +150,6 @@ namespace GUITest02
             }
         }
 
-        private void ToggleButton_Click(object sender, RoutedEventArgs e)
-        {
-            int lvMethod = MethodList.SelectedIndex;
-
-            switch (lvMethod)
-            {
-                case 0: //GetStatement
-
-                    if (Toggle1.IsChecked == true)
-                    {
-                        System.Windows.MessageBox.Show("Choose year (day and month does not matter)");
-
-                        t3.Visibility = Visibility.Visible;
-                        tb3.Visibility = Visibility.Visible;
-                        t3.Text = "Statement ID";
-                        tb3.Text = "1";
-                    }
-                    else
-                    {
-                        t3.Visibility = Visibility.Hidden;
-                        tb3.Visibility = Visibility.Hidden;
-
-                        DatePicker1.Visibility = Visibility.Visible;
-                    }
-
-                    break;
-
-                case 1: //GetAccountBalance
-
-                    break;
-                case 2:
-
-                    break;
-                case 3:
-
-                    break;
-                case 4:
-
-                    break;
-
-                default:
-                    System.Windows.MessageBox.Show("invalid method chosen");
-                    break;
-            }
-        }
-
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
             string lvpath = null;
@@ -269,6 +165,23 @@ namespace GUITest02
             if (!File.Exists(lvpath) && lvpath != null)
             {
                 File.WriteAllText(lvpath, gvresponse);
+            }
+        }
+
+        private void GetStToggle_Click(object sender, RoutedEventArgs e)
+        {
+            if (GetStToggle.IsChecked == true)
+            {
+                System.Windows.MessageBox.Show("Choose year (day and month does not matter)");
+
+                GetStatementYearStPanel.Visibility = Visibility.Visible;
+
+                GetStTStId.Text = "Statement ID";
+                GetStTbStId.Text = "1";
+            }
+            else
+            {
+                GetStatementYearStPanel.Visibility = Visibility.Collapsed;
             }
         }
     }
