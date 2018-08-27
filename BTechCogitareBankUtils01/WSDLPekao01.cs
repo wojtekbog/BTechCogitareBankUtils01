@@ -191,6 +191,11 @@ namespace BTechCogitareBankUtils01
 
         public static string getPaymentStatusReport(string cert, string MsgId, DateTime CreDtTm, string OrgnMsgId)
         {
+            /* cert - path to certificate file *.p12
+             * MsgId - Message Id
+             * CreDtTm - Cretion Date Time
+             * OrgnMsgId - Original Meassage Id
+             */
 
             peako.pekaoccs00101 loWSDL = new peako.pekaoccs00101();
             peako.MessageIdentyfication1 loMsgId;
