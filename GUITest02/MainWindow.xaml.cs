@@ -52,7 +52,7 @@ namespace GUITest02
 
                     //string lvyear;
                     string lvStId;
-                    if(GetStToggle.IsChecked == true)
+                    if (GetStToggle.IsChecked == true)
                     {
                         lvStId = GetStTbStId.Text;
                         gvresponse = WSDLPekao01.getStatement(gvfile, GetStTbMsgId.Text, GetSTTbAccId.Text, true, GetStDatePicker.SelectedDate.Value.Date, lvformat, lvStId);
@@ -66,7 +66,15 @@ namespace GUITest02
                     gvresponse = WSDLPekao01.getAccountBalance(gvfile, GetAccBalTbMsgId.Text, GetAccBalTbBBAN.Text, GetAccBalTbIBAN.Text);
 
                     break;
-                case 2:
+
+                case 2: //GetPaymentStatusReport
+
+                    DateTime CrDtTm = new DateTime();
+                    CrDtTm = GetPayStReDatePicker.SelectedDate.Value.Date;
+                    TimeSpan ts = new TimeSpan(Int32.Parse(GetPayStReHour.Text), Int32.Parse(GetPayStReMin.Text), Int32.Parse(GetPayStReSec.Text));
+                    CrDtTm = CrDtTm + ts;
+
+                    gvresponse = WSDLPekao01.getPaymentStatusReport(gvfile, GetPayStReTbMsgId.Text, CrDtTm, GetPayStReTbOrgMsgId.Text);
 
                     break;
                 case 3:
@@ -85,13 +93,14 @@ namespace GUITest02
         private void buttonProperties_Click(object sender, RoutedEventArgs e)
         {
             int lvMethod = MethodList.SelectedIndex;
-            
-            switch(lvMethod)
+
+            switch (lvMethod)
             {
                 case 0: //GetStatement
 
                     GetStPanel.Visibility = Visibility.Visible;
                     GetAccBalPanel.Visibility = Visibility.Collapsed;
+                    GetPayStRePanel.Visibility = Visibility.Collapsed;
 
                     GetStDatePicker.SelectedDate = new DateTime(2018, 04, 23);
                     GetStTbMsgId.Text = "GS201109050031111111";
@@ -105,13 +114,28 @@ namespace GUITest02
 
                     GetStPanel.Visibility = Visibility.Collapsed;
                     GetAccBalPanel.Visibility = Visibility.Visible;
+                    GetPayStRePanel.Visibility = Visibility.Collapsed;
 
                     GetAccBalTbMsgId.Text = "GS201109050031111111";
                     GetAccBalTbBBAN.Text = "94124062921111001080877861";
                     GetAccBalTbIBAN.Text = "PL79124062921111001045475556";
 
                     break;
-                case 2:
+
+                case 2: //GetPaymentStatusReport
+
+                    GetStPanel.Visibility = Visibility.Collapsed;
+                    GetAccBalPanel.Visibility = Visibility.Collapsed;
+                    GetPayStRePanel.Visibility = Visibility.Visible;
+
+                    GetPayStReTbMsgId.Text = "GPSR201808220001";
+                    GetPayStReTbOrgMsgId.Text = "DT201808220001";
+                    GetPayStReDatePicker.SelectedDate = new DateTime(2018, 07, 24);
+
+                    GetPayStReHour.Text = "12";
+                    GetPayStReMin.Text = "49";
+                    GetPayStReSec.Text = "12";
+
                     break;
 
                 case 3:
@@ -146,7 +170,7 @@ namespace GUITest02
             if (result == true)
             {
                 // Open document
-                gvfile= dlg.FileName;
+                gvfile = dlg.FileName;
             }
         }
 

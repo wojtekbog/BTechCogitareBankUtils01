@@ -3,12 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GUITest02"
+        xmlns:local="clr-namespace:GUITest02" 
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="170"/>
+            <ColumnDefinition Width="200"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0">
@@ -17,11 +17,10 @@
             <ListBox x:Name="MethodList" Padding="5" Margin="10" Height="130" SelectionChanged="buttonProperties_Click">
                 <ListBoxItem Content="GetStatement"/>
                 <ListBoxItem Content="GetAccountBalance"/>
-                <ListBoxItem Content="item3"/>
+                <ListBoxItem Content="GetPaymentStatusReport"/>
                 <ListBoxItem Content="item4"/>
                 <ListBoxItem Content="item5"/>
             </ListBox>
-            <Button x:Name="buttonProperties" Content="Show properties" Margin="10" Padding="5" Click="buttonProperties_Click" IsEnabled="False" Visibility="Hidden"/>
             <Button x:Name="buttonGo" Content="Go" Margin="10" Padding="5" Click="buttonGo_Click"/>
             <TextBox x:Name="fileName" Margin="10" Padding="5" Text="filename"/>
             <Button x:Name="buttonSave" Content="Save response" Margin="10" Padding="5" Click="buttonSave_Click"/>
@@ -58,6 +57,22 @@
             <WrapPanel>
                 <TextBlock x:Name="GetAccBalTIBAN" Width="200" Text="International Bank Account Number" Padding="5" Margin="10"/>
                 <TextBox x:Name="GetAccBalTbIBAN" Width="300" Padding="5" Margin="10"/>
+            </WrapPanel>
+        </StackPanel>
+        <StackPanel x:Name="GetPayStRePanel" Grid.Column="1" Margin="10" Visibility="Collapsed">
+            <WrapPanel>
+                <TextBlock x:Name="GetPayStReTMsgId" Width="120" Text="Message Id" Padding="5" Margin="10"/>
+                <TextBox x:Name="GetPayStReTbMsgId" Width="300" Padding="5" Margin="10"/>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock x:Name="GetPayStReTOrgMsgId" Width="120" Text="Original Message Id" Padding="5" Margin="10"/>
+                <TextBox x:Name="GetPayStReTbOrgMsgId" Width="300" Padding="5" Margin="10"/>
+            </WrapPanel>
+            <WrapPanel>
+                <DatePicker x:Name="GetPayStReDatePicker" Height="25" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="115"/>
+                <TextBox x:Name="GetPayStReHour" Width="30" Height="30" Padding="5"/>
+                <TextBox x:Name="GetPayStReMin" Width="30" Height="30" Padding="5"/>
+                <TextBox x:Name="GetPayStReSec" Width="30" Height="30" Padding="5"/>
             </WrapPanel>
         </StackPanel>
         <StackPanel Grid.Column="1" Margin="10" Visibility="Collapsed">

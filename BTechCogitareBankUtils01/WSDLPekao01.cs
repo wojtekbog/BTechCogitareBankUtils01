@@ -188,5 +188,61 @@ namespace BTechCogitareBankUtils01
             }
             return "Error";
         }
+
+        public static string getPaymentStatusReport(string cert, string MsgId, DateTime CreDtTm, string OrgnMsgId)
+        {
+
+            peako.pekaoccs00101 loWSDL = new peako.pekaoccs00101();
+            peako.MessageIdentyfication1 loMsgId;
+            peako.GetPaymentStatusReport loReport;
+            peako.PaymentStatusRequest loRequest;
+            peako.PaymentStatusResponse loResponse;
+
+            loMsgId = new peako.MessageIdentyfication1();
+            loMsgId.Id = MsgId;
+            //loMsgId.Id = "GPSR201808220001";
+
+            loReport = new peako.GetPaymentStatusReport();
+            loReport.GrpHdr = new peako.GrpHeader();
+
+            //--- Message Id
+            loReport.GrpHdr.MsgId = new peako.MessageId();
+            loReport.GrpHdr.MsgId.Id = MsgId;
+            //loReport.GrpHdr.MsgId.Id = "GPSR201808220001";
+
+            //--- Creation Date Time
+            loReport.GrpHdr.CreDtTm = CreDtTm;
+
+            //--- Original Message Id
+            loReport.OrgnlGrpInfAndSts = new peako.OriginalGrpInfoAndStatus();
+            loReport.OrgnlGrpInfAndSts.OrgnlMsgId = OrgnMsgId;
+            //loReport.OrgnlGrpInfAndSts.OrgnlMsgId = "DT201808220001";
+
+            loRequest = new peako.PaymentStatusRequest();
+            loRequest.Document = new peako.Document8();
+            loRequest.Document.GetPayStsRpt = loReport;
+
+            try
+            {
+                loWSDL.ClientCertificates.Add(new X509Certificate2(@cert));
+                loResponse = loWSDL.GetPaymentStatusReport(loRequest);
+
+                ////convert response to string
+                var stringwriter = new System.IO.StringWriter();
+                var serializer = new XmlSerializer(loResponse.GetType());
+                serializer.Serialize(stringwriter, loResponse);
+                string lvtext = stringwriter.ToString();
+
+                lvtext = lvtext.Replace(" xmlns=\"urn:iso:std:iso:20022:tech:xsd:pain.002.001.03\"", "");
+
+                MessageBox.Show(lvtext);
+                return lvtext;
+            }
+            catch (Exception loError)
+            {
+                MessageBox.Show(loError.ToString());
+            }
+            return "Error";
+        }
     }
 }
