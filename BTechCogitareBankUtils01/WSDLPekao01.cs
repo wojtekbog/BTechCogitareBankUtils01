@@ -249,5 +249,106 @@ namespace BTechCogitareBankUtils01
             }
             return "Error";
         }
+
+        public string DomesticTransferUS(string cert) //string MsgId
+        {
+            peako.pekaoccs00101 loWSDL = new peako.pekaoccs00101();
+            peako.MessageIdentyfication1 loMsgId;
+            peako.TransferRequest loRequest;
+
+            loRequest = new peako.TransferRequest();
+            loRequest.Document = new peako.Document5();
+            loRequest.Document.CstmrCdtTrfInitn = new peako.CustomerCreditTransferInitiationV03();
+            loRequest.Document.CstmrCdtTrfInitn.GrpHdr = new peako.GroupHeader32();
+
+            //--- Message Id
+            loRequest.Document.CstmrCdtTrfInitn.GrpHdr.MsgId = "DT201808220001";
+            //loRequest.Document.CstmrCdtTrfInitn.GrpHdr.MsgId = MsgId;
+
+            loRequest.Document.CstmrCdtTrfInitn.GrpHdr.CreDtTm = new DateTime(2018, 06, 05, 17, 17, 39, 693959, DateTimeKind.Local);
+            loRequest.Document.CstmrCdtTrfInitn.GrpHdr.NbOfTxs = "2";
+            loRequest.Document.CstmrCdtTrfInitn.GrpHdr.InitgPty = new peako.PartyIdentification322();
+            loRequest.Document.CstmrCdtTrfInitn.GrpHdr.InitgPty.Nm = "Firma PC";
+
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf = new peako.PaymentInstructionInformation3[1];
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0] = new peako.PaymentInstructionInformation3();
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].PmtInfId = "DT201808220001";
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].PmtMtd = peako.PaymentMethod3Code.TRF;
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].BtchBookg = false;
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].ReqdExctnDt = new DateTime(2018, 08, 22);
+
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].Dbtr = new peako.PartyIdentification322();
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].Dbtr.Nm = "Firma PC";
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].Dbtr.PstlAdr = new peako.PostalAddress62();
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].Dbtr.PstlAdr.Ctry = "PL";
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].Dbtr.PstlAdr.AdrLine = new string[2];
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].Dbtr.PstlAdr.AdrLine[0] = "Gdzieœ 11 31-124 Kraków";
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].Dbtr.PstlAdr.AdrLine[1] = null;
+
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].DbtrAcct = new peako.CashAccount162();
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].DbtrAcct.Id = new peako.AccountIdentification4Choice2();
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].DbtrAcct.Id.Item = "90124062921111001045475455";
+
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].DbtrAgt = new peako.BranchAndFinancialInstitutionIdentification42();
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].DbtrAgt.FinInstnId = new peako.FinancialInstitutionIdentification72();
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].DbtrAgt.FinInstnId.ClrSysMmbId = new peako.ClearingSystemMemberIdentification22();
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].DbtrAgt.FinInstnId.ClrSysMmbId.ClrSysId = new peako.ClearingSystemIdentification2Choice2();
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].DbtrAgt.FinInstnId.ClrSysMmbId.ClrSysId.Item = "PLKNR";
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].DbtrAgt.FinInstnId.ClrSysMmbId.MmbId = "12406292";
+
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf = new peako.CreditTransferTransactionInformation10[2];
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0] = new peako.CreditTransferTransactionInformation10();
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].PmtId = new peako.PaymentIdentification1();
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].PmtId.EndToEndId = "ISUZ1234500222";
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].Amt = new peako.AmountType3Choice();
+
+            peako.ActiveOrHistoricCurrencyAndAmount2 loAmt1 = new peako.ActiveOrHistoricCurrencyAndAmount2();
+            loAmt1.Ccy = "PLN";
+            loAmt1.Value = new decimal(0.01);
+
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].Amt.Item = loAmt1;
+
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].CdtrAgt = new peako.BranchAndFinancialInstitutionIdentification42();
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].CdtrAgt.FinInstnId = new peako.FinancialInstitutionIdentification72();
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].CdtrAgt.FinInstnId.ClrSysMmbId = new peako.ClearingSystemMemberIdentification22();
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].CdtrAgt.FinInstnId.ClrSysMmbId.ClrSysId = new peako.ClearingSystemIdentification2Choice2();
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].CdtrAgt.FinInstnId.ClrSysMmbId.ClrSysId.Item = "PLKNR";
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].CdtrAgt.FinInstnId.ClrSysMmbId.MmbId = "12401066";
+
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].Cdtr = new peako.PartyIdentification322();
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].Cdtr
+
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[1] = new peako.CreditTransferTransactionInformation10();
+
+
+
+
+
+
+
+            try
+            {
+                //loWSDL.ClientCertificates.Add(new X509Certificate2(@cert));
+                //loResponse = loWSDL.GetPaymentStatusReport(loRequest);
+
+                //////convert response to string
+                //var stringwriter = new System.IO.StringWriter();
+                //var serializer = new XmlSerializer(loResponse.GetType());
+                //serializer.Serialize(stringwriter, loResponse);
+                //string lvtext = stringwriter.ToString();
+
+                //lvtext = lvtext.Replace(" xmlns=\"urn:iso:std:iso:20022:tech:xsd:pain.002.001.03\"", "");
+
+                string lvtext = "text";
+
+                MessageBox.Show(lvtext);
+                return lvtext;
+            }
+            catch (Exception loError)
+            {
+                MessageBox.Show(loError.ToString());
+            }
+            return "Error";
+        }
     }
 }
