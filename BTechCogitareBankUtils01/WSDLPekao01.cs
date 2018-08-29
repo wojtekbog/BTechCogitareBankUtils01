@@ -316,14 +316,22 @@ namespace BTechCogitareBankUtils01
             loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].CdtrAgt.FinInstnId.ClrSysMmbId.MmbId = "12401066";
 
             loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].Cdtr = new peako.PartyIdentification322();
-            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].Cdtr
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].Cdtr.Nm = "PHU ELEKTRYK";
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].Cdtr.PstlAdr = new peako.PostalAddress62();
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].Cdtr.PstlAdr.Ctry = "PL";
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].Cdtr.PstlAdr.AdrLine = new string[2];
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].Cdtr.PstlAdr.AdrLine[0] = "UL. ZWIRKI 61";
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].Cdtr.PstlAdr.AdrLine[1] = "03-090 WARSZAWA";
+
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].CdtrAcct = new peako.CashAccount162();
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].CdtrAcct.Id = new peako.AccountIdentification4Choice2();
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].CdtrAcct.Id.Item = "33124010661111001000150838";
+
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].RmtInf = new peako.RemittanceInformation52();
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].RmtInf.Ustrd = new string[1];
+            loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[0].RmtInf.Ustrd[0] = "Testowy tyt 02";
 
             loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[1] = new peako.CreditTransferTransactionInformation10();
-
-
-
-
-
 
 
             try
