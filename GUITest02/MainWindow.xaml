@@ -18,7 +18,7 @@
                 <ListBoxItem Content="GetStatement"/>
                 <ListBoxItem Content="GetAccountBalance"/>
                 <ListBoxItem Content="GetPaymentStatusReport"/>
-                <ListBoxItem Content="item4"/>
+                <ListBoxItem Content="DomesticTransfer"/>
                 <ListBoxItem Content="item5"/>
             </ListBox>
             <Button x:Name="buttonGo" Content="Go" Margin="10" Padding="5" Click="buttonGo_Click"/>

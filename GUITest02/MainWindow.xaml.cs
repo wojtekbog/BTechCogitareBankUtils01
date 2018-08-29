@@ -77,7 +77,10 @@ namespace GUITest02
                     gvresponse = WSDLPekao01.getPaymentStatusReport(gvfile, GetPayStReTbMsgId.Text, CrDtTm, GetPayStReTbOrgMsgId.Text);
 
                     break;
-                case 3:
+
+                case 3: //DomesticTransfer
+
+                    gvresponse = WSDLPekao01.DomesticTransfer(gvfile);
 
                     break;
                 case 4:
@@ -138,7 +141,12 @@ namespace GUITest02
 
                     break;
 
-                case 3:
+                case 3: //DomesticTransfer
+
+                    GetStPanel.Visibility = Visibility.Collapsed;
+                    GetAccBalPanel.Visibility = Visibility.Collapsed;
+                    GetPayStRePanel.Visibility = Visibility.Collapsed;
+
                     break;
 
                 case 4:
