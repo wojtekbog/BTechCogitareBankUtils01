@@ -25,6 +25,20 @@ namespace BTechCogitareBankUtils01
 
         [DispId(4)]
         string DomesticTransfer(string cert);
+
+        [DispId(5)]
+        String Error
+        {
+            get;
+            //set;
+        }
+
+        [DispId(6)]
+        int ErrorCode
+        {
+            get;
+            //set;
+        }
     }
 
     // Events interface Database_COMObjectEvents 
@@ -40,6 +54,12 @@ namespace BTechCogitareBankUtils01
     ComSourceInterfaces(typeof(WSDL_Events))]
     public class WSDLPekao01 : IWSDLPekao01
     {
+        public string Error { get; private set; }
+        public int ErrorCode { get; private set; }
+
+        public static void Main()
+        { }
+
         public string getStatement(string cert, string MsgId, string AccId, bool byear, DateTime Dt, string format = "XML", string StId = " ")
         {
             /* cert - path to certificate file *.p12
