@@ -7,12 +7,40 @@ using System.Windows.Forms;
 using System.Security.Cryptography.X509Certificates;
 using peako = BTechCogitareBankUtils01.pl.pekaobiznes24.www;
 using System.Xml.Serialization;
+using System.Runtime.InteropServices;
 
 namespace BTechCogitareBankUtils01
 {
-    public class WSDLPekao01
+    [Guid("740F4C88-A0E5-4FE4-94F3-E7A806F92F74")]
+    public interface IWSDLPekao01
     {
-        public static string getStatement(string cert, string MsgId, string AccId, bool byear, DateTime Dt, string format = "XML", string StId = " ")
+        [DispId(1)]
+        string getStatement(string cert, string MsgId, string AccId, bool byear, DateTime Dt, string format, string StId);
+
+        [DispId(2)]
+        string getAccountBalance(string cert, string MsgId, string BBAN, string IBAN);
+
+        [DispId(3)]
+        string getPaymentStatusReport(string cert, string MsgId, DateTime CreDtTm, string OrgnMsgId);
+
+        [DispId(4)]
+        string DomesticTransfer(string cert);
+    }
+
+    // Events interface Database_COMObjectEvents 
+    [Guid("0B9E4EFD-F796-4D82-8025-78FFB0C47C79"),
+        InterfaceType(ComInterfaceType.InterfaceIsIDispatch)]
+    public interface WSDL_Events
+    {
+    }
+
+    [Guid("FCA3A3C0-17B6-4271-81C1-566106DA78B5"),
+    ComVisible(true),
+    ClassInterface(ClassInterfaceType.None),
+    ComSourceInterfaces(typeof(WSDL_Events))]
+    public class WSDLPekao01 : IWSDLPekao01
+    {
+        public string getStatement(string cert, string MsgId, string AccId, bool byear, DateTime Dt, string format = "XML", string StId = " ")
         {
             /* cert - path to certificate file *.p12
              * MsgId - Message Id
@@ -101,7 +129,7 @@ namespace BTechCogitareBankUtils01
             return "Error";
         }
 
-        public static string getAccountBalance(string cert, string MsgId, string BBAN, string IBAN)
+        public string getAccountBalance(string cert, string MsgId, string BBAN, string IBAN)
         {
             /* cert - path to certificate file *.p12
              * MsgId - Message Id
@@ -189,7 +217,7 @@ namespace BTechCogitareBankUtils01
             return "Error";
         }
 
-        public static string getPaymentStatusReport(string cert, string MsgId, DateTime CreDtTm, string OrgnMsgId)
+        public string getPaymentStatusReport(string cert, string MsgId, DateTime CreDtTm, string OrgnMsgId)
         {
             /* cert - path to certificate file *.p12
              * MsgId - Message Id
@@ -250,7 +278,7 @@ namespace BTechCogitareBankUtils01
             return "Error";
         }
 
-        public static string DomesticTransfer(string cert) //string MsgId
+        public string DomesticTransfer(string cert) //string MsgId
         {
             peako.pekaoccs00101 loWSDL = new peako.pekaoccs00101();
             //peako.MessageIdentyfication1 loMsgId;
@@ -368,6 +396,18 @@ namespace BTechCogitareBankUtils01
             loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[1].RmtInf = new peako.RemittanceInformation52();
             loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[1].RmtInf.Ustrd = new string[1];
             loRequest.Document.CstmrCdtTrfInitn.PmtInf[0].CdtTrfTxInf[1].RmtInf.Ustrd[0] = "Testowy tyt 02";
+
+            //--- Signature
+            loRequest.Signature = new peako.SignatureType();
+            loRequest.Signature.Id = "";
+            loRequest.Signature.KeyInfo = new peako.KeyInfoType();
+            loRequest.Signature.KeyInfo.Id = "";
+            loRequest.Signature.SignatureValue = new peako.SignatureValueType();
+            loRequest.Signature.SignatureValue.Id = "";
+            loRequest.Signature.SignedInfo = new peako.SignedInfoType();
+            loRequest.Signature.SignedInfo.SignatureMethod = new peako.SignatureMethodType();
+            loRequest.Signature.SignedInfo.SignatureMethod.Algorithm = "";
+
 
             try
             {

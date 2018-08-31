@@ -35,6 +35,7 @@ namespace GUITest02
 
         string gvfile;
         string gvresponse;
+        WSDLPekao01 WSDL = new WSDLPekao01();
 
         private void buttonGo_Click(object sender, RoutedEventArgs e)
         {
@@ -55,15 +56,15 @@ namespace GUITest02
                     if (GetStToggle.IsChecked == true)
                     {
                         lvStId = GetStTbStId.Text;
-                        gvresponse = WSDLPekao01.getStatement(gvfile, GetStTbMsgId.Text, GetSTTbAccId.Text, true, GetStDatePicker.SelectedDate.Value.Date, lvformat, lvStId);
+                        gvresponse = WSDL.getStatement(gvfile, GetStTbMsgId.Text, GetSTTbAccId.Text, true, GetStDatePicker.SelectedDate.Value.Date, lvformat, lvStId);
                     }
                     else
-                        gvresponse = WSDLPekao01.getStatement(gvfile, GetStTbMsgId.Text, GetSTTbAccId.Text, false, GetStDatePicker.SelectedDate.Value.Date, lvformat);
+                        gvresponse = WSDL.getStatement(gvfile, GetStTbMsgId.Text, GetSTTbAccId.Text, false, GetStDatePicker.SelectedDate.Value.Date, lvformat);
                     break;
 
                 case 1: //GetAccountBalance
 
-                    gvresponse = WSDLPekao01.getAccountBalance(gvfile, GetAccBalTbMsgId.Text, GetAccBalTbBBAN.Text, GetAccBalTbIBAN.Text);
+                    gvresponse = WSDL.getAccountBalance(gvfile, GetAccBalTbMsgId.Text, GetAccBalTbBBAN.Text, GetAccBalTbIBAN.Text);
 
                     break;
 
@@ -74,13 +75,13 @@ namespace GUITest02
                     TimeSpan ts = new TimeSpan(Int32.Parse(GetPayStReHour.Text), Int32.Parse(GetPayStReMin.Text), Int32.Parse(GetPayStReSec.Text));
                     CrDtTm = CrDtTm + ts;
 
-                    gvresponse = WSDLPekao01.getPaymentStatusReport(gvfile, GetPayStReTbMsgId.Text, CrDtTm, GetPayStReTbOrgMsgId.Text);
+                    gvresponse = WSDL.getPaymentStatusReport(gvfile, GetPayStReTbMsgId.Text, CrDtTm, GetPayStReTbOrgMsgId.Text);
 
                     break;
 
                 case 3: //DomesticTransfer
 
-                    gvresponse = WSDLPekao01.DomesticTransfer(gvfile);
+                    gvresponse = WSDL.DomesticTransfer(gvfile);
 
                     break;
                 case 4:
