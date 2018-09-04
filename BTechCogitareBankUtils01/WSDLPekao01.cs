@@ -8,9 +8,12 @@ using System.Security.Cryptography.X509Certificates;
 using peako = BTechCogitareBankUtils01.pl.pekaobiznes24.www;
 using System.Xml.Serialization;
 using System.Runtime.InteropServices;
+using System.Net;
 
 namespace BTechCogitareBankUtils01
 {
+
+
     [Guid("740F4C88-A0E5-4FE4-94F3-E7A806F92F74")]
     public interface IWSDLPekao01
     {
@@ -54,6 +57,8 @@ namespace BTechCogitareBankUtils01
     ComSourceInterfaces(typeof(WSDL_Events))]
     public class WSDLPekao01 : IWSDLPekao01
     {
+
+
         public string Error { get; private set; }
         public int ErrorCode { get; private set; }
 
@@ -70,6 +75,9 @@ namespace BTechCogitareBankUtils01
              * format - format of response (XML / PDF)
              * StId - Statement Id
              */
+
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             peako.pekaoccs00101 loWSDL = new peako.pekaoccs00101();
             peako.MessageIdentyfication1 loMsgId;
@@ -156,6 +164,9 @@ namespace BTechCogitareBankUtils01
              * BBAN - Basic Bank Account Number
              * IBAN - International Bank Account Number
              */
+
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             peako.pekaoccs00101 loWSDL = new peako.pekaoccs00101();
             peako.MessageIdentyfication1 loMsgId;
@@ -245,6 +256,9 @@ namespace BTechCogitareBankUtils01
              * OrgnMsgId - Original Meassage Id
              */
 
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
             peako.pekaoccs00101 loWSDL = new peako.pekaoccs00101();
             peako.MessageIdentyfication1 loMsgId;
             peako.GetPaymentStatusReport loReport;
@@ -300,6 +314,9 @@ namespace BTechCogitareBankUtils01
 
         public string DomesticTransfer(string cert) //string MsgId
         {
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
             peako.pekaoccs00101 loWSDL = new peako.pekaoccs00101();
             //peako.MessageIdentyfication1 loMsgId;
             peako.TransferRequest loRequest;
